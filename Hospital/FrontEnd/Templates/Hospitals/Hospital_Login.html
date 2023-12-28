@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+  <!-- Font Awesome -->
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+  rel="stylesheet"
+/>
+<!-- Google Fonts -->
+<link
+  href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+  rel="stylesheet"
+/>
+<!-- MDB -->
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.css"
+  rel="stylesheet"
+/>
+</head>
+<body>
+<!-- Section: Design Block -->
+<section class="background-radial-gradient overflow-hidden">
+
+
+  <div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
+    <div class="row gx-lg-5 align-items-center mb-5">
+      <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10; margin-top:-200px;">
+
+        <h1></h1>
+      </div>
+
+      <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
+        <div id="" class="position-absolute rounded-circle shadow-5-strong"></div>
+        <div  class="position-absolute shadow-5-strong"></div>
+
+        <div class="card bg-glass" style="width:400px;">
+          <div class="card-body px-4 py-5 px-md-5">
+
+            <form method="post" action="{% url 'Hospital_Login_Data' %}" enctype="multipart/form-data">
+              {% csrf_token %}
+              <!-- 2 column grid layout with text inputs for the first and last names -->
+                 <h4 style="text-align:center;">Login Here</h4><br>
+               {% for message in messages %}
+
+            <h6 style="color:red;">{{ message }} {{usr}}</h6>
+            {% endfor %}
+              <!-- Email input -->
+              <div class="form-outline mb-4">
+                <input type="text" id="form3Example3" class="form-control" name="username" />
+                <label class="form-label" for="form3Example3">UserName</label>
+              </div>
+
+              <!-- Password input -->
+              <div class="form-outline mb-4">
+                <input type="password" id="form3Example4" class="form-control" name="password" />
+                <label class="form-label" for="form3Example4">Password</label>
+              </div>
+
+              <!-- Checkbox -->
+
+
+              <!-- Submit button -->
+              <button type="submit" class="btn btn-danger btn-block mb-4">
+                Sign up
+              </button>
+
+              <!-- Register buttons -->
+
+            </form>
+
+                    <h8 style="text-align: center;">don't have an account ? <a style="text-decoration: none;" href="{% url 'Hospital_Signup_Pape' %}">Click here to Register</a></h8>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Section: Design Block -->
+
+
+<!-- MDB -->
+<script
+  type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.js"></script>
+</body>
+<style>
+
+  .background-radial-gradient {
+    background-color: #e4a11b;
+        background-Image:url({% static 'patient_doctor/images/e71.jpg' %}); background-size:100% 100%;
+    background-size: 110% 600px;
+}
+
+
+
+
+
+
+.btn-danger {
+    --mdb-btn-bg: #db230c;
+    --mdb-btn-color: #fff;
+    --mdb-btn-box-shadow: 0 4px 9px -4px #dc534c;
+    --mdb-btn-hover-bg: #d14e48;
+    --mdb-btn-hover-color: #fff;
+    --mdb-btn-focus-bg: #f30a32;
+    --mdb-btn-focus-color: #fff;
+    --mdb-btn-active-bg: #eb1606;
+    --mdb-btn-active-color: #fff;
+    --mdb-btn-box-shadow-state: 0 8px 9px -4px rgba(220,76,100,0.3),0 4px 18px 0 rgba(220,76,100,0.2);
+}
+    .bg-glass {
+      background-color: hsla(0, 0%, 100%, 0.9) !important;
+      backdrop-filter: saturate(200%) blur(25px);
+    }
+    .btn-danger {
+    --mdb-btn-bg: #e4a11b;
+    --mdb-btn-color: #fff;
+    --mdb-btn-box-shadow: 0 4px 9px -4px #e4a11b;
+    --mdb-btn-hover-bg: #f3a405;
+    --mdb-btn-hover-color: #fff;
+    --mdb-btn-focus-bg: #e4a11b;
+    --mdb-btn-focus-color: #fff;
+    --mdb-btn-active-bg: #c1850e;
+    --mdb-btn-active-color: #fff;
+    --mdb-btn-box-shadow-state: 0 8px 9px -4px rgba(220,76,100,0.3),0 4px 18px 0 rgba(220,76,100,0.2);
+}
+    .
+  </style>
+</html>

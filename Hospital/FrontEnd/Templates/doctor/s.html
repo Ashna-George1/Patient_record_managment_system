@@ -1,0 +1,543 @@
+<html lang="en">
+{% load static %}
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  <title>Search Results</title>
+
+
+  <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'Patient_doctor/css/open-iconic-bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'Patient_doctor/css/animate.css' %}">
+
+    <link rel="stylesheet" href="{% static 'Patient_doctor/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'Patient_doctor/css/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'Patient_doctor/css/magnific-popup.css' %}">
+
+    <link rel="stylesheet" href="{% static 'Patient_doctor/css/aos.css' %}">
+
+    <link rel="stylesheet" href="{% static 'Patient_doctor/css/ionicons.min.css' %}">
+
+    <link rel="stylesheet" href="{% static 'Patient_doctor/css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'Patient_doctor/css/icomoon.css' %}">
+    <link rel="stylesheet" href="{% static 'Patient_doctor/css/style.css' %}">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light ftco-navbar-light" id="ftco-navbar" style="box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.2); margin-top:-40px;">
+	    <div class="container">
+	      <a class="navbar-brand" href="index.html">Mediplus</a>
+	      <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="oi oi-menu"></span> Menu
+	      </button>
+
+	      <div class="collapse navbar-collapse" id="ftco-nav">
+	        <ul class="navbar-nav nav ml-auto">
+	          <li class="nav-item"><a href="#home-section" class="nav-link"><span>Home</span></a></li>
+	          <li class="nav-item"><a href="#about-section" class="nav-link"><span>About</span></a></li>
+	          <li class="nav-item"><a href="#department-section" class="nav-link"><span>Department</span></a></li>
+	          <li class="nav-item"><a href="#doctor-section" class="nav-link"><span>Doctors</span></a></li>
+	          <li class="nav-item"><a href="{% url 'Doctor_PatientInfo_Page' %}" class="nav-link"><span>Patients</span></a></li>
+	          <li class="nav-item"><a href="#contact-section" class="nav-link"><span>Contact</span></a></li>
+	          <li class="nav-item cta mr-md-2"><a href="appointment.html" class="nav-link">Appointment</a></li>
+	        </ul>
+	      </div>
+	    </div>
+	  </nav>
+	  <section class="blog_item_img blog_area section-padding" style="background-image: url('{% static 'Patient_doctor/images/p.webp' %}'); height:10px;" data-section="home" data-stellar-background-ratio="0.5">
+      </section>
+    <div class="blog_item_img">
+                                <img class="card-img rounded-0" src="{% static 'Patient_doctor/images/p.webp' %}" alt="" height="500px";>
+                            </div>
+  <div class="" style="">
+    <br>
+<!--    <h1 style="color: red;">Search Results</h1>-->
+
+
+   {% for quote in quotes %}
+
+<!--                    <form action="{% url 'search_results' %}" class="booking_form" method="get">-->
+<!--                    <div class="mb-2 wow slideInUp" data-wow-delay="0.1s" style="margin-left:300px;">-->
+<!--                        <div class="input-group" style="width:500px;">-->
+
+<!--                            <input type="text" name="q" value="{{ quote.Username }}" class="form-control p-1" placeholder="Enter Patient ID"-->
+<!--                                   style=" padding-right:300px; text-align:center; border-top-left-radius: 25px;  border-bottom-left-radius: 25px;border-top-right-radius: 0;-->
+<!--    border-bottom-right-radius: 0; margin-left:35px;">-->
+<!--                            <button class="btn btn-primary px-4" style="margin-right:40px;"><i class="typcn typcn-search"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">-->
+<!--  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>-->
+<!--                            </svg></i></button>-->
+
+<!--                        </div>-->
+<!--&lt;!&ndash;                         <div class="mb-5 wow slideInUp" data-wow-delay="0.1s">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <img src="{{quote.profile_pic.url}}" alt="" class="img-fluid rounded" width="150px" height="150px;" style="margin-left:700px; margin-top:-100px;">&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--                    </div>-->
+<!--</form>-->
+    {% empty %}
+      <p>No results found. Try again.</p>
+    {% endfor %}
+
+
+  </div>
+ <div class="modal fade" id="searchModal" tabindex="-1">
+        <div class="modal-dialog modal-fullscreen">
+            <div class="modal-content" style="background: rgba(9, 30, 62, .7);">
+                <div class="modal-header border-0">
+                    <button type="button" class="btn bg-white btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                {% for quote in quotes %}
+                <div class="modal-body d-flex align-items-center justify-content-center">
+                    <div class="input-group" style="max-width: 600px;">
+                        <input type="text" value="{{quote.Username}}" class="form-control bg-transparent border-primary p-3" placeholder="Type search keyword">
+                        <button class="btn btn-primary px-4"><i class="bi bi-search"></i></button>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <!-- Full Screen Search End -->
+
+
+    <!-- Blog Start -->
+    <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="row g-5">
+                <!-- Blog list Start -->
+                <div class="col-lg-8">
+                    <div class="row g-5">
+                        {% for i in x %}
+                        <div class="col-md-12 wow slideInUp" data-wow-delay="0.1s" >
+                            <div class="blog-item bg-light rounded overflow-hidden" style="height:325px;">
+                                <div class="blog-img position-relative overflow-hidden">
+                                    <img class="img-fluid" src="img/blog-1.jpg" alt="">
+                                    <a class="position-absolute top-0 start-0 bg-primary text-white rounded-end mt-5 py-2 px-4" href="">Web Design</a>
+                                </div>
+                                <a href=""  class="" data-toggle="" >Change Patient</a>
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-primary" style="border-radius:5px;position: absolute;right: 10px;top: 5px;" data-toggle="modal" data-target="#exampleModalCenter">
+                                  Add
+                                </button>
+
+<!-- Modal -->
+                                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                  <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                      <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                          <span aria-hidden="true">&times;</span>
+                                        </button>
+                                      </div>
+                                      <div class="modal-body">
+                                        <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="well well-sm">
+                                                <form method="post" action="{% url 'MedicineData' %}" enctype="multipart/form-data">
+                                                    {% csrf_token %}
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="name">
+                                                                Medicine Name</label>
+                                                            <input type="text" class="form-control imp" name="medicine" id="name" placeholder="Enter name" required="required" />
+                                                            {% for quote in quotes %}
+                                                            <input type="hidden" class="form-control imp" name="q" value="{{ quote.Username }}"  placeholder="{{ quote.Username }}" required="required" />
+                                                        {% endfor %}
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label for="subject">
+                                                                Morning</label>
+                                                            <select id="subject" name="morning" class="form-control" required="required">
+                                                                <option value="na" selected="">Choose One:</option>
+                                                                <option value="0">0</option>
+                                                                <option value="0.5">0.5</option>
+                                                                <option value="1">1</option>
+                                                                <option value="1.5">1.5</option>
+                                                                <option value="2">2</option>
+                                                                <option value="2.5">2.5</option>
+                                                                <option value="3">3</option>
+                                                                <option value="3.5">3.5</option>
+                                                                <option value="4">4</option>
+                                                                <option value="4.5">4.5</option>
+                                                            </select>
+                                                        </div>
+                                                         <div class="form-group">
+                                                            <label for="subject">
+                                                                Afternoon</label>
+                                                            <select id="subjct" name="afternoon" class="form-control" required="required">
+                                                               <option value="na" selected="">Choose One:</option>
+                                                                <option value="0">0</option>
+                                                                <option value="0.5">0.5</option>
+                                                                <option value="1">1</option>
+                                                                <option value="1.5">1.5</option>
+                                                                <option value="2">2</option>
+                                                                <option value="2.5">2.5</option>
+                                                                <option value="3">3</option>
+                                                                <option value="3.5">3.5</option>
+                                                                <option value="4">4</option>
+                                                                <option value="4.5">4.5</option>
+                                                            </select>
+                                                        </div>
+                                                         <div class="form-group">
+                                                            <label for="subject">
+                                                                Night</label>
+                                                            <select id="sect" name="night" class="form-control" required="required">
+                                <option value="na" selected="">Choose One:</option>
+                                                                <option value="0">0</option>
+                                                                <option value="0.5">0.5</option>
+                                                                <option value="1">1</option>
+                                                                <option value="1.5">1.5</option>
+                                                                <option value="2">2</option>
+                                                                <option value="2.5">2.5</option>
+                                                                <option value="3">3</option>
+                                                                <option value="3.5">3.5</option>
+                                                                <option value="4">4</option>
+                                                                <option value="4.5">4.5</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="name">
+                                                                Total Day's</label>
+                                                            <input name="day" id="msage" class="form-control"  required="required"
+                                                                placeholder="Message">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="name">
+                                                                Message</label>
+                                                            <textarea name="message" id="message" class="form-control" rows="9" cols="25" required="required"
+                                                                placeholder="Message"></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <button type="submit" class="btn btn-primary pull-right" id="btnContactUs">
+                                                            Send Message</button>
+                                                    </div>
+                                                </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                      </div>
+                                      <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="p-4">
+                                    <div class="d-flex mb-3">
+                                        <small class="me-3"><i class="far fa-user text-primary me-2"></i></small>
+                                        <small><i class="far fa-calendar-alt text-primary me-2"></i></small>
+                                    </div>
+<form method="post" action="{% url 'Doctor_Patient_Medicine' %}">
+    {% csrf_token %}
+    {% for quote in quotes %}
+    <input type="hidden" name="q" value="{{quote.Username}}">
+    {% endfor %}
+    <div class="table-wrapper-scroll-y my-custom-scrollbar">
+        <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Medicine</th>
+      <th scope="col">Days</th>
+      <th scope="col">Morning/Afternoon/Night</th>
+      <th scope="col">Message</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for i in x %}
+    <tr>
+      <th scope="row">*</th>
+      <td>{{i.Medicine}}</td>
+      <td>{{i.Day}}</td>
+      <td>{{i.Morning}} - {{i.Afternoon}} - {{i.Night}}</td>
+      <td>{{i.Message}}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table></div>
+
+<button>Submit</button>
+    </form>
+                                </div>
+
+                            </div>
+                        </div>
+                        {% empty %}
+                        <div class="col-md-12 wow slideInUp" data-wow-delay="0.6s">
+                            <div class="blog-item bg-light rounded overflow-hidden">
+                                <div class="blog-img position-relative overflow-hidden">
+                                    <img class="img-fluid" src="img/blog-2.jpg" alt="">
+                                    <a class="position-absolute top-0 start-0 bg-primary text-white rounded-end mt-5 py-2 px-4" href="">Web Design</a>
+                                </div>
+                                <div class="p-4">
+                                    <div class="d-flex mb-3">
+                                        <small class="me-3"><i class="far fa-user text-primary me-2"></i>John Doe</small>
+                                        <small><i class="far fa-calendar-alt text-primary me-2"></i>01 Jan, 2045</small>
+                                    </div>
+                                    <h4 class="mb-3">How to build a website</h4>
+                                    <p>Dolor et eos labore stet justo sed est sed sed sed dolor stet amet</p>
+                                    <a class="text-uppercase" href="">Read More <i class="bi bi-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        <div class="col-md-12 wow slideInUp" data-wow-delay="0.6s">
+                            <div class="blog-item bg-light rounded overflow-hidden">
+                                <div class="blog-img position-relative overflow-hidden">
+                                    <img class="img-fluid" src="img/blog-2.jpg" alt="">
+                                    <a class="position-absolute top-0 start-0 bg-primary text-white rounded-end mt-5 py-2 px-4" href="">Web Design</a>
+                                </div>
+                                <div class="p-4">
+                                    <div class="d-flex mb-3">
+                                        <small class="me-3"><i class="far fa-user text-primary me-2"></i>John Doe</small>
+                                        <small><i class="far fa-calendar-alt text-primary me-2"></i>01 Jan, 2045</small>
+                                    </div>
+                                    <h4 class="mb-3">How to build a website</h4>
+                                    <p>Dolor et eos labore stet justo sed est sed sed sed dolor stet amet</p>
+                                    <a class="text-uppercase" href="">Read More <i class="bi bi-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Blog list End -->
+
+                <!-- Sidebar Start -->
+
+
+                <div class="col-lg-4">
+                    <!-- Search Form Start -->
+{% for quote in quotes %}
+                    <form action="{% url 'search_results' %}" class="booking_form" method="get">
+                    <div class="mb-5 wow slideInUp" data-wow-delay="0.1s">
+                        <div class="input-group">
+
+                            <input type="text" name="q" value="{{ quote.Username }}" class="form-control p-1" placeholder="">
+                            <button class="btn-white" style=" height:50px; margin-top:1px; border:1px groove;"><i class="typcn typcn-search"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                            </svg></i></button>
+                        </div>
+                    </div>
+</form>
+                    <!-- Search Form End -->
+
+                    <!-- Category Start -->
+                    <div class="mb-5 wow slideInUp" data-wow-delay="0.1s" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                        <div class="section-title section-title-sm position-relative pb-3 mb-4">
+                            <h3 class="mb-0 py-2 px-3 mb-2">{{quote.Name}} Details </h3>
+                            <img src="{{quote.profile_pic.url}}" width="100px" height="100px" style="margin-left:210px; margin-top:-20px;">
+                        </div>
+                        <div class="link-animated d-flex flex-column justify-content-start">
+                            <h5 class="h6 fw-semi-bold  rounded py-2 px-3 mb-2"><i class="bi bi-arrow-right me-2"></i><b style="color:rgb(120,120,120)">Name </b><b style="margin-left:62px;">:</b> <l1 style="margin-left:15px;">{{quote.Name}} {{quote.LName}}</l1> </h5>
+                            <h6 class="h6 fw-semi-bold  rounded py-2 px-3 mb-2" ><i class="bi bi-arrow-right me-2"></i><b style="color:rgb(120,120,120)">Username </b><b style="margin-left:30px; color:#202020">:</b> <l1 style="margin-left:15px;">{{quote.Username}}</l1></h6>
+                            <h6 class="h6 fw-semi-bold  rounded py-2 px-3 mb-2" ><i class="bi bi-arrow-right me-2"></i><b style="color:rgb(120,120,120)">Gender </b><b style="margin-left:52px;">:</b> <l1 style="margin-left:15px;">{{quote.Gender}}</l1></h6>
+                            <h6 class="h6 fw-semi-bold  rounded py-2 px-3 mb-2"><i class="bi bi-arrow-right me-2"></i><b style="color:rgb(120,120,120)">Address </b><b style="margin-left:48px;">:</b><l1 style="margin-left:15px;"> {{quote.Address}}</l1></h6>
+                            <h6 class="h6 fw-semi-bold  rounded py-2 px-3 mb-2" ><i class="bi bi-arrow-right me-2"></i><b style="color:rgb(120,120,120)">Mobile </b><b style="margin-left:58px;">:</b> <l1 style="margin-left:15px;">{{quote.Mobile}}</l1></h6>
+<!--                            <h6 class="h6 fw-semi-bold  rounded py-2 px-3 mb-2"><i class="bi bi-arrow-right me-2"></i><label>Username :</label> {{quote.Gender}}</h6>-->
+                        </div>
+                    </div>
+                    <!-- Category End -->
+
+                    <!-- Recent Post Start -->
+                    <div class="mb-5 wow slideInUp" data-wow-delay="0.1s">
+                        <div class="section-title section-title-sm position-relative pb-3 mb-4">
+                            <h3 class="mb-0">Recent Post</h3>
+                        </div>
+                        <div class="d-flex rounded overflow-hidden mb-3">
+                            <img class="img-fluid" src="img/blog-1.jpg" style="width: 100px; height: 100px; object-fit: cover;" alt="">
+                            <a href="" class="h5 fw-semi-bold d-flex align-items-center bg-light px-3 mb-0">Lorem ipsum dolor sit amet adipis elit
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Recent Post End -->
+
+                    <!-- Image Start -->
+                    <div class="mb-5 wow slideInUp" data-wow-delay="0.1s">
+                        <img src="{{quote.profile_pic.url}}" alt="" class="img-fluid rounded">
+                    </div>
+    {% endfor %}                <!-- Image End -->
+
+                    <!-- Tags Start -->
+<!--                    <div class="mb-5 wow slideInUp" data-wow-delay="0.1s">-->
+<!--                        <div class="section-title section-title-sm position-relative pb-3 mb-4">-->
+<!--                            <h3 class="mb-0">Tag Cloud</h3>-->
+<!--                        </div>-->
+<!--                        <div class="d-flex flex-wrap m-n1">-->
+<!--                            <a href="" class="btn btn-light m-1">Design</a>-->
+<!--                            <a href="" class="btn btn-light m-1">Development</a>-->
+<!--                            <a href="" class="btn btn-light m-1">Marketing</a>-->
+<!--                            <a href="" class="btn btn-light m-1">SEO</a>-->
+<!--                            <a href="" class="btn btn-light m-1">Writing</a>-->
+<!--                            <a href="" class="btn btn-light m-1">Consulting</a>-->
+<!--                            <a href="" class="btn btn-light m-1">Design</a>-->
+<!--                            <a href="" class="btn btn-light m-1">Development</a>-->
+<!--                            <a href="" class="btn btn-light m-1">Marketing</a>-->
+<!--                            <a href="" class="btn btn-light m-1">SEO</a>-->
+<!--                            <a href="" class="btn btn-light m-1">Writing</a>-->
+<!--                            <a href="" class="btn btn-light m-1">Consulting</a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+                    <!-- Tags End -->
+
+                    <!-- Plain Text Start -->
+<!--                    <div class="wow slideInUp" data-wow-delay="0.1s">-->
+<!--                        <div class="section-title section-title-sm position-relative pb-3 mb-4">-->
+<!--                            <h3 class="mb-0">Plain Text</h3>-->
+<!--                        </div>-->
+<!--                        <div class="bg-light text-center" style="padding: 30px;">-->
+<!--                            <p>Vero sea et accusam justo dolor accusam lorem consetetur, dolores sit amet sit dolor clita kasd justo, diam accusam no sea ut tempor magna takimata, amet sit et diam dolor ipsum amet diam</p>-->
+<!--                            <a href="" class="btn btn-primary py-2 px-4">Read More</a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+                    <!-- Plain Text End -->
+                </div>
+
+                <!-- Sidebar End -->
+            </div>
+        </div>
+    </div>
+    <!-- Blog End -->
+
+
+    <!-- Vendor Start -->
+    <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container py-5 mb-5">
+            <div class="bg-white">
+                <div class="owl-carousel vendor-carousel">
+                    <img src="img/vendor-1.jpg" alt="">
+                    <img src="img/vendor-2.jpg" alt="">
+                    <img src="img/vendor-3.jpg" alt="">
+                    <img src="img/vendor-4.jpg" alt="">
+                    <img src="img/vendor-5.jpg" alt="">
+                    <img src="img/vendor-6.jpg" alt="">
+                    <img src="img/vendor-7.jpg" alt="">
+                    <img src="img/vendor-8.jpg" alt="">
+                    <img src="img/vendor-9.jpg" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+<style>
+  .booking_form_container {
+    width: 200%;
+    margin-top: 34px;
+    padding-left: 78px;
+    padding-right: 88px;
+}
+div {
+    display: block;
+    position: relative;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+  .booking_form_container {
+    width: 200%;
+    margin-top: 34px;
+    padding-left: 78px;
+    padding-right: 88px;
+}
+div {
+    display: block;
+    position: relative;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.booking_button {
+    width: 152px;
+    height: 54px;
+    background: blue;
+    font-size: 14px;
+    font-weight: 500;
+    color: #ffffff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+  .booking_input {
+    width: 500px;
+    height: 54px;
+    background: rgba(255,255,255,0.7);
+    border: solid 2px blue;
+    padding-left: 27px;
+    font-size: 14px;
+    font-weight: 500;
+    color: black;
+    outline: none;
+    margin-right:20px;
+}
+
+    .jumbotron {
+background: #358CCE;
+color: #FFF;
+border-radius: 0px;
+}
+.jumbotron-sm { padding-top: 24px;
+padding-bottom: 24px; }
+.jumbotron small {
+color: #FFF;
+}
+.h1 small {
+font-size: 24px;
+}
+.blog_right_sidebar .search_widget .input-group button {
+    background: #fff;
+    border-left: 0;
+    border-right: 1px groove #f0e9ff;
+    padding: 4px 15px;
+    border-left: 0;
+}
+    .my-custom-scrollbar {
+position: relative;
+height: 200px;
+overflow: auto;
+}
+.table-wrapper-scroll-y {
+display: block;
+}
+    .input-group1 {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-align: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    width: 100%;
+}
+</style>
+  <script src="{% static 'Patient_doctor/js/jquery.min.js' %}"></script>
+  <script src="{% static 'Patient_doctor/js/jquery-migrate-3.0.1.min.js' %}"></script>
+  <script src="{% static 'Patient_doctor/js/popper.min.js' %}"></script>
+  <script src="{% static 'Patient_doctor/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'Patient_doctor/js/jquery.easing.1.3.js' %}"></script>
+  <script src="{% static 'Patient_doctor/js/jquery.waypoints.min.js' %}"></script>
+  <script src="{% static 'Patient_doctor/js/jquery.stellar.min.js' %}"></script>
+  <script src="{% static 'Patient_doctor/js/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'Patient_doctor/js/jquery.magnific-popup.min.js' %}"></script>
+  <script src="{% static 'Patient_doctor/js/aos.js' %}"></script>
+  <script src="{% static 'Patient_doctor/js/jquery.animateNumber.min.js' %}"></script>
+  <script src="{% static 'Patient_doctor/js/scrollax.min.js' %}"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <script src="{% static 'Patient_doctor/js/google-map.js' %}"></script>
+
+  <script src="{% static 'Patient_doctor/js/main.js' %}"></script>
+
+</body>
+</html>

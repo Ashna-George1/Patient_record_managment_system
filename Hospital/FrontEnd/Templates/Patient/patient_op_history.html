@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+{% extends 'doctor/DashBord.html' %}
+{% block content %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+ <div class="container-fluid bg-btn-warning py-5 "
+         style="background-Image:url({% static 'patient_doctor/images/hp.jpg' %}); background-size:100% 100%;margin-bottom: 90px; height:400px;">
+        <div class="row py-5">
+            <div class="col-12 pt-lg-5 mt-lg-5 text-center">
+                {% for i in doctor %}
+                <h1 class="display-4 text-white animated zoomIn" style=""></h1>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+<h1 style="margin-top:100px;"></h1>
+<div class="col-md-12 wow" data-wow-delay="0.6s">
+                        <div class="blog-item  rounded">
+                            <div class="blog-img position-relative ">
+                                <img alt="" class="img-fluid" src="img/blog-2.jpg">
+<!--                                <a class="position-absolute top-0 start-0 bg-primary text-black rounded-end mt-5 py-2 px-4"-->
+<!--                                   href="">Web Design</a>-->
+<!--                            </div>-->
+
+                            <div class="">
+                        <h2 style="color:#ffc107;text-align:center;">Op Prescription details</h2>
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            {% for quote in quotes %}
+                            <input name="q" type="hidden" value="{{quote.Username}}">
+                            {% endfor %}
+                           <div class="row py-5">
+    <div class="col-lg-11 mx-auto">
+      <div class="card border-0">
+        <div class="">
+                            <div class="table-responsive">
+                            <table class="table table-striped table-bordered" style="width:100%">  <thead>
+                                <tr>
+                                    <th>Medicine</th>
+                                    <th>Morning--Afternoon--Night</th>
+                                    <th>Total Day's</th>
+                                    <th>Message</th>
+                                    <th>date</th>
+                                    <th>Doctor Name</th>
+                                    <th>Doctor ID</th>
+                                    <th>Hospital Name</th>
+                                    <th>Delete</th>
+
+                                </tr>
+
+                                </thead>
+                                <tbody>
+                                {% for i in op %}
+                                <tr>
+                                    <td data-label="S.No" style="color:black;">{{i.Medicine}}</td>
+                                    <td data-label="Name" style="color:black;">{{i.Morning}}-{{i.Afternoon}}-{{i.Night}}</td>
+                                    <td data-label="Staus" style="color:black;">{{i.Day}}</td>
+                                    <td data-label="Staus" style="color:black;">{{i.Message}}</td>
+                                    <td data-label="Staus" style="color:black;">{{i.date}}</td>
+                                    <td data-label="Staus" style="color:black;">{{i.Doctor_Name}}</td>
+                                    <td data-label="Staus" style="color:black;">{{i.Doctor_User}}</td>
+                                    <td data-label="Staus" style="color:black;">{{i.Hospital_Name}}</td>
+                                    <td data-label="Staus">
+                                        <button class="btn btn-outline-danger">
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+  <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
+  <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
+</svg>                                            Delete</button>
+
+                                    </td>
+
+                                </tr>
+                                {% endfor %}
+
+                                </tbody>
+                            </table>
+                            </div>
+        </div>
+      </div>
+    </div>
+                           </div>
+                        </form>
+
+
+                    </div>
+
+                </div>
+            </div>
+</div>
+</body>
+<style>
+     .table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .table td,
+    .table th {
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      text-align: center;
+      font-size: 16px;
+    }
+
+   .table th {
+    background-color: #ffc107;
+    color: #212529;
+}
+
+    .table tbody tr:nth-child(even) {
+    background-color: #f5f5a0;;
+}
+
+    /*responsive*/
+
+    @media (max-width: 500px) {
+      .table thead {
+        display: none;
+      }
+
+      .table,
+      .table tbody,
+      .table tr,
+      .table td {
+        display: block;
+        width: 100%;
+      }
+      .table tr {
+        margin-bottom: 15px;
+      }
+      .table td {
+        padding-left: 50%;
+        text-align: left;
+        position: relative;
+      }
+      .table td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        width: 50%;
+        padding-left: 15px;
+        font-size: 15px;
+        font-weight: bold;
+        text-align: left;
+      }
+    }
+</style>
+</html>
+{% endblock %}

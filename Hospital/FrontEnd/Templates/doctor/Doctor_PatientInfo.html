@@ -1,0 +1,234 @@
+
+<!doctype html>
+{% load static %}
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>Topic Listing Bootstrap 5 Template</title>
+
+        <!-- CSS FILES -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans&display=swap" rel="stylesheet">
+
+        <link href="{% static 'searchpage/css/bootstrap.min.css' %}" rel="stylesheet">
+
+        <link href="{% static 'searchpage/css/bootstrap-icons.css' %}" rel="stylesheet">
+
+        <link href="{% static 'searchpage/css/templatemo-topic-listing.css' %}" rel="stylesheet">
+<!--
+
+TemplateMo 590 topic listing
+
+https://templatemo.com/tm-590-topic-listing
+
+-->
+    </head>
+
+    <body id="top">
+
+
+
+          <!-- Navbar Start -->
+<div class="container-fluid position-relative p-0">
+    <nav class="navbar navbar-expand-lg navbar-dark px-5 py-3 py-lg-0">
+               <a class="navbar-brand" href="index.html"><span style="color:Blue;">MEDI</span><span style="color:red;">Plus</span><span class="" >+</span></a>
+
+        <button class="navbar-toggler" data-bs-target="#navbarCollapse" data-bs-toggle="collapse" type="button">
+            <span class="fa fa-bars"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto">
+                <a class="nav-item nav-link" href="{% url 'Doctor_PatientInfo_Page' %}" style="color:black;">Search</a>
+                <a class="nav-item nav-link" href="index.html"></a>
+<!--                <a class="nav-item nav-link" href="index.html" style="color:black;"><i class="fa fa-user-tie me-2"></i>Profile</a>-->
+                <a class="nav-item nav-link" href="index.html"></a>
+            </div>
+            <form action="{% url 'Doctor_Logout' %}">
+                {% for i in qoutes %}
+                <input name="q" type="hidden" value="{{i.Username}}">
+                {% endfor %}
+                {% for i in hospital %}
+                <input name="h" type="hidden" value="{{i.H_Username}}">
+                {% endfor %}
+{% if request.session.Username %}
+                    {% for i in doctor %}
+                    <input type="hidden" value="{{i.Username}}">
+                    {% endfor %}
+                    {% endif %}
+                <button class="btn btn-warning  btn-sm" type="submit">
+                <span class="glyphicon glyphicon-off">
+              <img height="20px;" src="{% static 'Labsearch/img/logout-8-64.png' %}" style="color:black" width="20px">
+</span> Logout
+                </button>
+
+            </form>
+            <!--            <button class="btn btn-btn-warning py-3 px-4" data-target="#exampleModalCenter" data-toggle="modal"-->
+            <!--                    type="button">-->
+            <!--                Launch Modal 06-->
+            <!--            </button>-->
+        </div>
+
+
+    </nav>
+
+
+</div>
+<!-- Navbar End -->
+
+            <section class="hero-section d-flex justify-content-center align-items-center" id="section_1">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-8 col-12 mx-auto">
+                            <h1 class="text-white text-center">Search Patient ID Here </h1>
+
+                            <h6 class="text-center"></h6>
+
+
+                            <form action="{% url 'searchresult' %}" method="get" class="custom-form mt-4 pt-2 mb-lg-0 mb-5" role="search">
+                                <div class="input-group input-group-lg" id="d1">
+                                    <span class="input-group-text bi-search" id="basic-addon1">
+
+                                    </span>
+
+                                    <input name="q" type="search" class="form-control" id="keyword" placeholder="Search Patient ID" aria-label="Search">
+                                    {% for i in doctor %}
+                                    <input type="hidden" name="d" type="search" class="form-control" value="{{i.Hospital}}" aria-label="Search">
+                                    {% endfor %}
+                                    <button type="submit" class="form-control">Search</button>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+
+
+<!--<footer class="site-footer section-padding">-->
+<!--            <div class="container">-->
+<!--                <div class="row">-->
+
+<!--                    <div class="col-lg-3 col-12 mb-4 pb-2">-->
+<!--                        <a class="navbar-brand mb-2" href="index.html">-->
+<!--                            <i class="bi-back"></i>-->
+<!--                            <span>Topic</span>-->
+<!--                        </a>-->
+<!--                    </div>-->
+
+<!--                    <div class="col-lg-3 col-md-4 col-6">-->
+<!--                        <h6 class="site-footer-title mb-3">Resources</h6>-->
+
+<!--                        <ul class="site-footer-links">-->
+<!--                            <li class="site-footer-link-item">-->
+<!--                                <a href="#" class="site-footer-link">Home</a>-->
+<!--                            </li>-->
+
+<!--                            <li class="site-footer-link-item">-->
+<!--                                <a href="#" class="site-footer-link">How it works</a>-->
+<!--                            </li>-->
+
+<!--                            <li class="site-footer-link-item">-->
+<!--                                <a href="#" class="site-footer-link">FAQs</a>-->
+<!--                            </li>-->
+
+<!--                            <li class="site-footer-link-item">-->
+<!--                                <a href="#" class="site-footer-link">Contact</a>-->
+<!--                            </li>-->
+<!--                        </ul>-->
+<!--                    </div>-->
+
+<!--                    <div class="col-lg-3 col-md-4 col-6 mb-4 mb-lg-0">-->
+<!--                        <h6 class="site-footer-title mb-3">Information</h6>-->
+
+<!--                        <p class="text-white d-flex mb-1">-->
+<!--                            <a href="tel: 305-240-9671" class="site-footer-link">-->
+<!--                                305-240-9671-->
+<!--                            </a>-->
+<!--                        </p>-->
+
+<!--                        <p class="text-white d-flex">-->
+<!--                            <a href="mailto:info@company.com" class="site-footer-link">-->
+<!--                                info@company.com-->
+<!--                            </a>-->
+<!--                        </p>-->
+<!--                    </div>-->
+
+<!--                    <div class="col-lg-3 col-md-4 col-12 mt-4 mt-lg-0 ms-auto">-->
+<!--                        <div class="dropdown">-->
+<!--                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">-->
+<!--                            English</button>-->
+
+<!--                            <ul class="dropdown-menu">-->
+<!--                                <li><button class="dropdown-item" type="button">Thai</button></li>-->
+
+<!--                                <li><button class="dropdown-item" type="button">Myanmar</button></li>-->
+
+<!--                                <li><button class="dropdown-item" type="button">Arabic</button></li>-->
+<!--                            </ul>-->
+<!--                        </div>-->
+
+<!--                        <p class="copyright-text mt-lg-5 mt-4">Copyright © 2048 Topic Listing Center. All rights reserved.-->
+<!--                        <br><br>Design: <a rel="nofollow" href="https://templatemo.com" target="_blank">TemplateMo</a> Distribution <a href="https://themewagon.com">ThemeWagon</a></p>-->
+
+<!--                    </div>-->
+
+<!--                </div>-->
+<!--            </div>-->
+<!--        </footer>-->
+
+
+
+        <!-- JAVASCRIPT FILES -->
+        <script src="{% static 'searchpage/js/jquery.min.js' %}"></script>
+        <script src="{% static 'searchpage/js/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'searchpage/js/jquery.sticky.js' %}"></script>
+        <script src="{% static 'searchpage/js/click-scroll.js' %}"></script>
+        <script src="{% static 'searchpage/js/custom.js' %}"></script>
+<style>
+    .featured-section {
+    background-color: #0d6efd;
+}
+    .hero-section {
+    background-image: linear-gradient(15deg, #0d6efd 0%, #80bad0 100%);
+    background-image: url('{% static 'Patient_doctor/images/444.jpg' %}');background-repeat: no-repeat;
+  background-size: 100% 120%;
+    position: relative;
+    overflow: hidden;
+    padding-top: 150px;
+    padding-bottom: 150px;
+    height:600px;
+}
+
+   .custom-form button[type="submit"] {
+    background: #f1b707;
+    border: none;
+}
+
+    sticky-wrapper.is-sticky .navbar {
+    background-color: ##0d6efd;
+}
+    :root {
+    --white-color: #ffffff;
+    --primary-color: #d19e05;
+    --secondary-color: #ffc107;
+    --section-bg-color: #f0f8ff;
+    --custom-btn-bg-color: #ffc107;
+    --custom-btn-bg-hover-color: #b58a0a;
+    --dark-color: #000000;
+    --p-color: #717275;
+    --border-color: #ffc107;
+    --link-hover-color: #d3a007;
+}
+</style>
+    </body>
+</html>

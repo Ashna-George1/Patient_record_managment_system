@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <title>Mediplus - Free Bootstrap 4 Template by Colorlib</title>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+
+    <link href="{% static 'Patient_doctor/css/open-iconic-bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'Patient_doctor/css/animate.css' %}" rel="stylesheet">
+
+    <link href="{% static 'Patient_doctor/css/owl.carousel.min.css' %}" rel="stylesheet">
+    <link href="{% static 'Patient_doctor/css/owl.theme.default.min.css' %}" rel="stylesheet">
+    <link href="{% static 'Patient_doctor/css/magnific-popup.css' %}" rel="stylesheet">
+
+    <link href="{% static 'Patient_doctor/css/aos.css' %}" rel="stylesheet">
+
+    <link href="{% static 'Patient_doctor/css/ionicons.min.css' %}" rel="stylesheet">
+
+    <link href="{% static 'Patient_doctor/css/flaticon.css' %}" rel="stylesheet">
+    <link href="{% static 'Patient_doctor/css/icomoon.css' %}" rel="stylesheet">
+    <link href="{% static 'Patient_doctor/css/style.css' %}" rel="stylesheet">
+</head>
+<body data-offset="300" data-spy="scroll" data-target=".site-navbar-target">
+<!--<div class="py-1 bg-black top" style="background-color:#ffc107;">-->
+<!--    <div class="container" style="background-color:#ffc107;">-->
+<!--        <div class="row no-gutters d-flex align-items-start align-items-center px-md-0" style="background-color:yellow;">-->
+<!--            <div class="col-lg-12 d-block" style="background-color:#ffc107;">-->
+<!--                <div class="row d-flex" style="color:black;">-->
+<!--                    <div class="col-md pr-4 d-flex topper align-items-center">-->
+<!--                        <div class="icon mr-2 d-flex justify-content-center align-items-center"><span-->
+<!--                                class="icon-phone2"></span></div>-->
+<!--                        <span class="text">+ 1235 2355 98</span>-->
+<!--                    </div>-->
+<!--                    <div class="col-md pr-4 d-flex topper align-items-center">-->
+<!--                        <div class="icon mr-2 d-flex justify-content-center align-items-center"><span-->
+<!--                                class="icon-paper-plane"></span></div>-->
+<!--                        <span class="text">youremail@email.com</span>-->
+<!--                    </div>-->
+<!--                    {% for i in patient %}-->
+<!--                    <div class="col-md-5 pr-4 d-flex topper align-items-center text-lg-right justify-content-end">-->
+<!--                        <p class="mb-0 register-link">Welcome {{i.Name}}<a href="#" style="color:black;"></a></p>-->
+<!--                    </div>-->
+<!--                    {% endfor %}-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light site-navbar-target"
+     id="ftco-navbar">
+    <div class="container">
+        <a class="navbar-brand" href="index.html"><span style="color:Blue;">MEDI</span><span style="color:red;">Plus</span><span class="" >+</span></a>
+        <button aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation"
+                class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" data-target="#ftco-nav" data-toggle="collapse" type="button">
+            <span class="oi oi-menu"></span> Menu
+        </button>
+
+        <div class="collapse navbar-collapse" id="ftco-nav">
+            <ul class="navbar-nav nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="{% url 'Doctor_Dashbord_page' %}" style="color:black;"><span>Home</span></a></li>
+                <li class="nav-item"><a class="nav-link" href="#about-section" ><span>About</span></a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'Patient_lab_report_page' %}" ><span>Lab History</span></a></li>
+                                <li class="nav-item"><a class="nav-link"
+                                        href="{% url 'Patient_pending_lab_history_page' %}" ><span>Pending Lab report</span></a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'Patient_op_history_page' %}" ><span>OP History</span></a>
+                </li>
+
+                <li class="nav-item"><a class="nav-link" href="#contact-section"><span>Contact</span></a></li>
+<form action="{% url 'Patient_Logout' %}">
+                {% for i in qoutes %}
+                <input name="q" type="hidden" value="{{i.Username}}">
+                {% endfor %}
+                {% for i in hospital %}
+                <input name="h" type="hidden" value="{{i.H_Username}}">
+                {% endfor %}
+{% if request.session.Username %}
+                    {% for i in doctor %}
+                    <input type="hidden" value="{{i.Username}}">
+                    {% endfor %}
+                    {% endif %}
+
+                <button class="btn btn-warning  btn-sm" type="submit">
+                <span class="glyphicon glyphicon-off">
+              <img height="20px;" src="{% static 'Labsearch/img/logout-8-64.png' %}" style="color:black" width="20px">
+</span> Logout
+                </button>
+
+            </form>
+                <!--                <li class="nav-item cta mr-md-2"><a class="nav-link" href="appointment.html">Appointment</a></li>-->
+            </ul>
+        </div>
+    </div>
+</nav>
+{% for i in patient %}
+<section class="hero-wrap js-fullheight" data-section="home"
+         data-stellar-background-ratio="0.5" style="background-Image:url({% static 'patient_doctor/images/ht1.jpg' %});
+         background-color:#ffc107;
+         background-size:100% 100%;
+
+      background-position: center center;
+
+      background-repeat: no-repeat;">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start"
+             data-scrollax-parent="true">
+            <div class="col-md-6  ftco-animate" style="margin-top:100px;">
+                <div class="mt-1">
+                    <span class="subheading"></span><br>
+                    <h2 class="mb-4 st" style="color:#ffd800;">Welcome {{i.Name}} </h2>
+<!--                <img src="{% static 'patient_doctor/images/p22.png' %}" width="700px" style="margin-left:-100px; margin-top:-200px;">-->
+
+                    <input type="hidden" value="{{i.Name}}">
+
+                    <p class="mb-4"></p>
+                    <!--	            <p><a href="#" class="btn btn-primary py-3 px-4">Make an appointment</a></p>-->
+                    <!--				<p><a href="#" class="btn btn-primary py-3 px-4">Make an appointment</a></p>-->
+                    <div data-zanim-xs="{&quot;delay&quot;:0.2}" style="transform: translate(0px, 0px); opacity: 1;">
+                        <!--                <a class="btn btn-primary me-8 mt-3" href="{% url 'Doctor_SignUp_SignIn_Page' %}" style="width:200px; height:50px; padding-top:10px; font-weight:600;">SignUp as Doctor </a>-->
+                        <!--                <a class="btn btn-warning mt-8" href="contact.html" style="width:200px; height:50px; margin-top:20px; padding-top:10px; font-weight:600;">SignUp As User-->
+                        <!--                 -->
+                    </div>
+                </div>
+<!--                <img src="{% static 'patient_doctor/images/p113.png' %}" width="800px" style="margin-left:400px; margin-top:-750px;">-->
+            </div>
+        </div>
+    </div>
+</section>
+{% endfor %}
+
+
+<!--<section class="ftco-section ftco-no-pt ftco-no-pb ftco-services-2 bg-light">-->
+<!--    <div class="container">-->
+<!--        <div class="row d-flex">-->
+<!--            <div class="col-md-12 py-5">-->
+<!--                <div class="py-lg-5">-->
+<!--                    <div class="row justify-content-center pb-5">-->
+<!--                        <div class="col-md-12 heading-section ftco-animate">-->
+<!--                            <h2 class="mb-3">Our Services</h2>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="row">-->
+<!--                        <div class="col-md-6 d-flex align-self-stretch ftco-animate">-->
+<!--                            <div class="media block-6 services d-flex">-->
+<!--                                <div class="icon justify-content-center align-items-center d-flex"><span-->
+<!--                                        class="flaticon-ambulance"></span></div>-->
+<!--                                <div class="media-body pl-md-4">-->
+<!--                                    <h3 class="heading mb-3">Emergency Services</h3>-->
+<!--                                    <p>A small river named Duden flows by their place and supplies it with the necessary-->
+<!--                                        regelialia.</p>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-6 d-flex align-self-stretch ftco-animate">-->
+<!--                            <div class="media block-6 services d-flex">-->
+<!--                                <div class="icon justify-content-center align-items-center d-flex"><span-->
+<!--                                        class="flaticon-doctor"></span></div>-->
+<!--                                <div class="media-body pl-md-4">-->
+<!--                                    <h3 class="heading mb-3">Qualified Doctors</h3>-->
+<!--                                    <p>A small river named Duden flows by their place and supplies it with the necessary-->
+<!--                                        regelialia.</p>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-6 d-flex align-self-stretch ftco-animate">-->
+<!--                            <div class="media block-6 services d-flex">-->
+<!--                                <div class="icon justify-content-center align-items-center d-flex"><span-->
+<!--                                        class="flaticon-stethoscope"></span></div>-->
+<!--                                <div class="media-body pl-md-4">-->
+<!--                                    <h3 class="heading mb-3">Outdoors Checkup</h3>-->
+<!--                                    <p>A small river named Duden flows by their place and supplies it with the necessary-->
+<!--                                        regelialia.</p>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-6 d-flex align-self-stretch ftco-animate">-->
+<!--                            <div class="media block-6 services d-flex">-->
+<!--                                <div class="icon justify-content-center align-items-center d-flex"><span-->
+<!--                                        class="flaticon-24-hours"></span></div>-->
+<!--                                <div class="media-body pl-md-4">-->
+<!--                                    <h3 class="heading mb-3">24 Hours Service</h3>-->
+<!--                                    <p>A small river named Duden flows by their place and supplies it with the necessary-->
+<!--                                        regelialia.</p>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+
+<!--        </div>-->
+<!--    </div>-->
+<!--</section>-->
+{% block content %}
+<div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
+<!--                <h5 class="fw-bold text-primary text-uppercase">Why Choose Us</h5>-->
+                <h1 class="mb-0">We Are Here to Grow Your Business Exponentially</h1>
+            </div>
+            <div class="row g-5">
+                <div class="col-lg-4">
+                    <div class="row g-5">
+                        <div class="col-12 wow zoomIn" data-wow-delay="0.2s">
+                            <div class="bg-warning rounded d-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                                <i class="bi bi-hospital text-white"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-hospital-fill" viewBox="0 0 16 16">
+  <path d="M6 0a1 1 0 0 0-1 1v1a1 1 0 0 0-1 1v4H1a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h6v-2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5V16h6a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1h-3V3a1 1 0 0 0-1-1V1a1 1 0 0 0-1-1zm2.5 5.034v1.1l.953-.55.5.867L9 7l.953.55-.5.866-.953-.55v1.1h-1v-1.1l-.953.55-.5-.866L7 7l-.953-.55.5-.866.953.55v-1.1h1ZM2.25 9h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5A.25.25 0 0 1 2 9.75v-.5A.25.25 0 0 1 2.25 9m0 2h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5a.25.25 0 0 1-.25-.25v-.5a.25.25 0 0 1 .25-.25M2 13.25a.25.25 0 0 1 .25-.25h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5a.25.25 0 0 1-.25-.25zM13.25 9h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5a.25.25 0 0 1-.25-.25v-.5a.25.25 0 0 1 .25-.25M13 11.25a.25.25 0 0 1 .25-.25h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5a.25.25 0 0 1-.25-.25zm.25 1.75h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5a.25.25 0 0 1-.25-.25v-.5a.25.25 0 0 1 .25-.25"/>
+</svg></i>
+                            </div>
+                            <h4>Best In Industry</h4>
+                            <p class="mb-0">Magna sea eos sit dolor, ipsum amet lorem diam dolor eos et diam dolor</p>
+                        </div>
+                        <div class="col-12 wow zoomIn" data-wow-delay="0.6s">
+                            <div class="bg-warning rounded d-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                                <i class="fa fa-award text-white"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-award-fill" viewBox="0 0 16 16">
+  <path d="m8 0 1.669.864 1.858.282.842 1.68 1.337 1.32L13.4 6l.306 1.854-1.337 1.32-.842 1.68-1.858.282L8 12l-1.669-.864-1.858-.282-.842-1.68-1.337-1.32L2.6 6l-.306-1.854 1.337-1.32.842-1.68L6.331.864z"/>
+  <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1z"/>
+</svg></i>
+                            </div>
+                            <h4>Award Winning</h4>
+                            <p class="mb-0">Magna sea eos sit dolor, ipsum amet lorem diam dolor eos et diam dolor</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4  wow zoomIn" data-wow-delay="0.9s" style="min-height: 350px;">
+                    <div class="position-relative h-100">
+                        <img class="position-absolute w-100 h-100 rounded wow zoomIn" data-wow-delay="0.1s" src="{% static 'patient_doctor/images/e11.png' %}" style="object-fit: cover;">
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="row g-5">
+                        <div class="col-12 wow zoomIn" data-wow-delay="0.4s">
+                            <div class="bg-warning rounded d-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                                <i class="bi bi-people-fill text-white"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
+  <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"/>
+</svg></i>
+                            </div>
+                            <h4>Professional Staff</h4>
+                            <p class="mb-0">Magna sea eos sit dolor, ipsum amet lorem diam dolor eos et diam dolor</p>
+                        </div>
+                        <div class="col-12 wow zoomIn" data-wow-delay="0.8s">
+                            <div class="bg-warning rounded d-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                                <i class="bi bi-alt text-white"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-fill" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
+</svg></i>
+                            </div>
+                            <h4>24/7 Support</h4>
+                            <p class="mb-0">Magna sea eos sit dolor, ipsum amet lorem diam dolor eos et diam dolor</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<section class="ftco-intro img" style="background-size:100% 100%;background-image: url({% static 'Signup/images/y.jpg' %});">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-9 text-center">
+                <h2>Your Health is Our Priority</h2>
+                <p>We can manage your dream building A small river named Duden flows by their place</p>
+<!--                <p class="mb-0"><a class="btn btn-white px-4 py-3" href="#">Search Places</a></p>-->
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--<section class="ftco-section" id="doctor-section" style="">-->
+<!--			<div class="container-fluid px-5">-->
+<!--				<div class="row justify-content-center mb-5 pb-2">-->
+<!--          <div class="col-md-8 text-center heading-section ftco-animate">-->
+<!--            <h2 class="mb-4">Our Qualified Doctors</h2>-->
+<!--            <p>Separated they live in. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country</p>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--				<div class="row">-->
+<!--                    {% for i in doctor %}-->
+<!--					<div class="col-md-6 col-lg-3">-->
+<!--						<div class="staff">-->
+<!--							<div class="img-wrap d-flex align-items-stretch">-->
+<!--								<div class="img align-self-stretch" style="background-image: url('{{i.Photo.url}}');"></div>-->
+<!--							</div>-->
+<!--							<div class="text pt-3 text-center">-->
+<!--								<h3 class="mb-2">{{i.Name}}</h3>-->
+<!--								<span class="position mb-2" style="color:#ffc40c">{{i.Specialization}}</span>-->
+<!--								<div class="faded">-->
+<!--&lt;!&ndash;									<p>I am an ambitious workaholic, but apart from that, pretty simple person.</p>&ndash;&gt;-->
+<!--									<ul class="ftco-social text-center">-->
+<!--		                 </ul>-->
+<!--&lt;!&ndash;		              <p><a href="#" class="btn btn-primary">Book now</a></p>&ndash;&gt;-->
+<!--	              </div>-->
+<!--							</div>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--                    {% endfor %}-->
+<!--				</div>-->
+<!--			</div>-->
+<!--		</section>-->
+
+
+<section class="ftco-section testimony-section img"  style="background-color:##ffc107">
+    <div class="overlay" ></div>
+    <div class="container">
+        <div class="row justify-content-center pb-3" style="color:black;">
+            <div class="col-md-7 text-center heading-section heading-section-white ftco-animate" style="color:black;">
+                <span class="subheading" style="color:black;">Read testimonials</span>
+                <h2 class="mb-4" style="color:black;">Our Patient Says</h2>
+            </div>
+        </div>
+        <div class="row ftco-animate justify-content-center" style="color:black;">
+            <div class="col-md-12">
+                <div class="carousel-testimony owl-carousel ftco-owl" style="color:black;">
+                    <div class="item">
+                        <div class="testimony-wrap text-center py-4 pb-5">
+                            <div class="user-img" style="background-image: url(images/person_1.jpg)">
+                    <span class="quote d-flex align-items-center justify-content-center">
+                      <i class="icon-quote-left"></i>
+                    </span>
+                            </div>
+                             <div class="text px-4" style="color:black;">
+                                <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia
+                                    and Consonantia, there live the blind texts.</p>
+                                <p class="name" style="color:black;">Jeff Freshman</p>
+                                <span class="position" style="color:black;">Patients</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="testimony-wrap text-center py-4 pb-5">
+                            <div class="user-img" style="background-image: url(images/person_2.jpg)">
+                    <span class="quote d-flex align-items-center justify-content-center">
+                      <i class="icon-quote-left"></i>
+                    </span>
+                            </div>
+                             <div class="text px-4" style="color:black;">
+                                <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia
+                                    and Consonantia, there live the blind texts.</p>
+                                <p class="name" style="color:black;">Jeff Freshman</p>
+                                <span class="position" style="color:black;">Patients</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="testimony-wrap text-center py-4 pb-5">
+                            <div class="user-img" style="background-image: url(images/person_3.jpg)">
+                    <span class="quote d-flex align-items-center justify-content-center">
+                      <i class="icon-quote-left"></i>
+                    </span>
+                            </div>
+                             <div class="text px-4" style="color:black;">
+                                <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia
+                                    and Consonantia, there live the blind texts.</p>
+                                <p class="name" style="color:black;">Jeff Freshman</p>
+                                <span class="position" style="color:black;">Patients</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="testimony-wrap text-center py-4 pb-5">
+                            <div class="user-img" style="background-image: url(images/person_1.jpg)">
+                    <span class="quote d-flex align-items-center justify-content-center">
+                      <i class="icon-quote-left"></i>
+                    </span>
+                            </div>
+                             <div class="text px-4" style="color:black;">
+                                <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia
+                                    and Consonantia, there live the blind texts.</p>
+                                <p class="name" style="color:black;">Jeff Freshman</p>
+                                <span class="position" style="color:black;">Patients</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="testimony-wrap text-center py-4 pb-5">
+                            <div class="user-img" style="background-image: url(images/person_3.jpg)">
+                    <span class="quote d-flex align-items-center justify-content-center">
+                      <i class="icon-quote-left"></i>
+                    </span>
+                            </div>
+                             <div class="text px-4" style="color:black;">
+                                <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia
+                                    and Consonantia, there live the blind texts.</p>
+                                <p class="name" style="color:black;">Jeff Freshman</p>
+                                <span class="position" style="color:black;">Patients</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="ftco-section contact-section" id="contact-section">
+    <div class="container">
+        <div class="row justify-content-center mb-5 pb-3">
+            <div class="col-md-7 heading-section text-center ftco-animate">
+                <h2 class="mb-4">Contact Us</h2>
+                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
+            </div>
+        </div>
+        <div class="row d-flex contact-info mb-5">
+            <div class="col-md-6 col-lg-3 d-flex ftco-animate">
+                <div class="align-self-stretch box p-4 text-center bg-light">
+                    <div class="icon d-flex align-items-center justify-content-center">
+                        <span class="icon-map-signs" style="color:#ffc40c"></span>
+                    </div>
+                    <h3 class="mb-4">Address</h3>
+                    <p>198 West 21th Street, Suite 721 New York NY 10016</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 d-flex ftco-animate">
+                <div class="align-self-stretch box p-4 text-center bg-light">
+                    <div class="icon d-flex align-items-center justify-content-center">
+                        <span class="icon-phone2" style="color:#ffc40c"></span>
+                    </div>
+                    <h3 class="mb-4">Contact Number</h3>
+                    <p><a href="tel://1234567920">+ 1235 2355 98</a></p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 d-flex ftco-animate">
+                <div class="align-self-stretch box p-4 text-center bg-light">
+                    <div class="icon d-flex align-items-center justify-content-center">
+                        <span class="icon-paper-plane" style="color:#ffc40c"></span>
+                    </div>
+                    <h3 class="mb-4">Email Address</h3>
+                    <p><a href="mailto:info@yoursite.com">info@yoursite.com</a></p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 d-flex ftco-animate">
+                <div class="align-self-stretch box p-4 text-center bg-light">
+                    <div class="icon d-flex align-items-center justify-content-center">
+                        <span class="icon-globe" style="color:#ffc40c"></span>
+                    </div>
+                    <h3 class="mb-4">Website</h3>
+                    <p><a href="#">yoursite.com</a></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row no-gutters block-9">
+           <div class="col-md-6 order-md-last d-flex">
+                <form action="{% url 'patient_contacts' %}" method="post" class="bg-light p-5 contact-form">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <input class="form-control" name="name" placeholder="Your Name" type="text">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" name="email" placeholder="Your Email" type="text">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" name="subject" placeholder="Subject" type="text">
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" cols="30" id="message" name="message" placeholder="Message"
+                                  rows="7"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <input class="btn btn-secondary py-3 px-5" type="submit" value="Send Message">
+                    </div>
+                </form>
+
+            </div>
+
+            <div class="col-md-6 d-flex">
+                <div class="">
+                            <iframe class="google-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2595.065641062665!2d-122.4230416990949!3d37.80335401520422!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80858127459fabad%3A0x808ba520e5e9edb7!2sFrancisco%20Park!5e1!3m2!1sen!2sth!4v1684340239744!5m2!1sen!2sth" width="200%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<footer class="ftco-footer ftco-section img" style="background-image: url(images/footer-bg.jpg);">
+    <div class="overlay"></div>
+    <div class="container-fluid px-md-5">
+        <div class="row mb-5">
+            <div class="col-md">
+                <div class="ftco-footer-widget mb-4">
+                    <h2 class="ftco-heading-2">Mediplus</h2>
+                    <p>Far far away, behind the word mountains, far from the countries.</p>
+                    <ul class="ftco-footer-social list-unstyled mt-5">
+                        <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+                        <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+                        <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="ftco-footer-widget mb-4 ml-md-4">
+                    <h2 class="ftco-heading-2">Departments</h2>
+                    <ul class="list-unstyled">
+                        <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Neurology</a></li>
+                        <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Opthalmology</a></li>
+                        <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Nuclear Magnetic</a></li>
+                        <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Surgical</a></li>
+                        <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Cardiology</a></li>
+                        <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Dental</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="ftco-footer-widget mb-4 ml-md-4">
+                    <h2 class="ftco-heading-2">Links</h2>
+                    <ul class="list-unstyled">
+                        <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Home</a></li>
+                        <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>About</a></li>
+                        <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Departments</a></li>
+                        <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Doctors</a></li>
+                        <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Blog</a></li>
+                        <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Pricing</a></li>
+                        <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="ftco-footer-widget mb-4">
+                    <h2 class="ftco-heading-2">Services</h2>
+                    <ul class="list-unstyled">
+                        <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Emergency Services</a></li>
+                        <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Qualified Doctors</a></li>
+                        <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Outdoors Checkup</a></li>
+                        <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>24 Hours Services</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="ftco-footer-widget mb-4">
+                    <h2 class="ftco-heading-2">Have a Questions?</h2>
+                    <div class="block-23 mb-3">
+                        <ul>
+                            <li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span>
+                            </li>
+                            <li><a href="#"><span class="icon icon-phone"></span><span
+                                    class="text">+2 392 3929 210</span></a></li>
+                            <li><a href="#"><span class="icon icon-envelope pr-4"></span><span class="text">info@yourdomain.com</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+
+                <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    Copyright &copy;<script>document.write(new Date().getFullYear());</script>
+                    All rights reserved | This template is made with <i aria-hidden="true"
+                                                                        class="icon-heart color-danger"></i> by <a
+                            href="https://colorlib.com" target="_blank">Colorlib</a>
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+            </div>
+        </div>
+    </div>
+</footer>
+{% endblock %}
+
+<!-- loader -->
+<div class="show fullscreen" id="ftco-loader">
+    <svg class="circular" height="48px" width="48px">
+        <circle class="path-bg" cx="24" cy="24" fill="none" r="22" stroke="#eeeeee" stroke-width="4"/>
+        <circle class="path" cx="24" cy="24" fill="none" r="22" stroke="#F96D00" stroke-miterlimit="10"
+                stroke-width="4"/>
+    </svg>
+</div>
+
+
+<script src="{% static 'Patient_doctor/js/jquery.min.js' %}"></script>
+<script src="{% static 'Patient_doctor/js/jquery-migrate-3.0.1.min.js' %}"></script>
+<script src="{% static 'Patient_doctor/js/popper.min.js' %}"></script>
+<script src="{% static 'Patient_doctor/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'Patient_doctor/js/jquery.easing.1.3.js' %}"></script>
+<script src="{% static 'Patient_doctor/js/jquery.waypoints.min.js' %}"></script>
+<script src="{% static 'Patient_doctor/js/jquery.stellar.min.js' %}"></script>
+<script src="{% static 'Patient_doctor/js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'Patient_doctor/js/jquery.magnific-popup.min.js' %}"></script>
+<script src="{% static 'Patient_doctor/js/aos.js' %}"></script>
+<script src="{% static 'Patient_doctor/js/jquery.animateNumber.min.js' %}"></script>
+<script src="{% static 'Patient_doctor/js/scrollax.min.js' %}"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+<script src="{% static 'Patient_doctor/js/google-map.js' %}"></script>
+
+<script src="{% static 'Patient_doctor/js/main.js' %}"></script>
+<style>
+    .ftco-navbar-light.scrolled {
+    position: fixed;
+    right: 0;
+    left: 0;
+    top: 0;
+    margin-top: -130px;
+    background: #ffc107 !important;
+    -webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    padding: 0 15px;
+}
+
+   .testimony-section .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    content: '';
+    opacity: inherit;
+    background: #ffc107;
+}
+    .ftco-services-2 .services .icon {
+    line-height: 1.3;
+    position: relative;
+    margin-bottom: 20px;
+    width: 80px;
+    height: 80px;
+    z-index: 1;
+    margin-bottom: 20px;
+    background: #ededff;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    border-radius: 50%;
+}
+    .ftco-services-2 .services .icon span {
+    font-size: 50px;
+    color: #ffc107;
+}
+    .st {
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+}
+        .staff:hover .text h3, .staff:focus .text h3 {
+    color: #ffc107;
+}
+    .ftco-navbar-light .navbar-nav > .nav-item > .nav-link span:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background: #ff5e13;
+    visibility: visible;
+    -webkit-transform: scaleX(0);
+    -moz-transform: scaleX(0);
+    -ms-transform: scaleX(0);
+    -o-transform: scaleX(0);
+    transform: scaleX(0);
+    -webkit-transition: all 0.3s ease-in-out 0s;
+    -moz-transition: all 0.3s ease-in-out 0s;
+    -ms-transition: all 0.3s ease-in-out 0s;
+    -o-transition: all 0.3s ease-in-out 0s;
+    transition: all 0.3s ease-in-out 0s;
+}
+</style>
+
+</body>
+</html>

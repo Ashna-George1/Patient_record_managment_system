@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <!-- Font Awesome -->
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+  rel="stylesheet"
+/>
+<!-- Google Fonts -->
+<link
+  href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+  rel="stylesheet"
+/>
+<!-- MDB -->
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.css"
+  rel="stylesheet"
+/>
+</head>
+<body>
+<!-- Section: Design Block -->
+<section class="text-center text-lg-start">
+  <style>
+    .cascading-right {
+      margin-right: -50px;
+    }
+
+    @media (max-width: 991.98px) {
+      .cascading-right {
+        margin-right: 0;
+      }
+    }
+  </style>
+
+  <!-- Jumbotron -->
+  <div class="container py-4 bg-yellow" >
+    <div class="row g-0 align-items-center">
+      <div class="col-lg-5 mb-5 mb-lg-0">
+        <div class="card cascading-right" style="
+            background: hsla(0, 0%, 100%, 0.55);
+            backdrop-filter: blur(30px);
+            ">
+          <div class="card-body p-5 shadow-5 text-center">
+            <h2 class="fw-bold mb-5">Hospital Register</h2>
+
+            <form method="post" action="{% url 'Hospital_Signup_Data' %}" name="custom_form" id="customForm"  onsubmit="return FormValidation()" enctype="multipart/form-data">
+              {% csrf_token %}
+              <!-- 2 column grid layout with text inputs for the first and last names -->
+              <div class="row">
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline">
+                    <input type="text" id="form3Example1" class="form-control" name="name"/>
+                    <span class="error">Please Enter Hospital Name</span>
+                    <label class="form-label" for="form3Example1">Hospital Name</label>
+
+                  </div>
+                </div>
+                 <div class="col-md-6 mb-4">
+                  <div class="form-outline">
+                    <input type="email" id="form3Emple2" class="form-control" name="email"/>
+                    <span class="error">Please Enter Email</span>
+                    <label class="form-label" for="form3Example2">Email</label>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline">
+                    <input type="text" id="form3Example2" class="form-control" name="username" />
+                    <span class="error">Please Username</span>
+                    {% for message in messages %}
+
+            <h6 style="color:red;">{{ message }} {{usr}}</h6>
+                    {% endfor %}
+                    <label class="form-label" for="form3Example2">Username</label>
+                  </div>
+                </div>
+                 <div class="col-md-6 mb-4">
+                  <div class="form-outline">
+                    <input type="password" id="form3Exampl" class="form-control" name="password" />
+                    <span class="error">Please Enter Password atleast 6 charecters</span>
+                    <label class="form-label" for="form3Example2">Password</label>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Email input -->
+              <div class="form-outline mb-4">
+                <input type="text" id="form3Example3" class="form-control" name="country" />
+                <span class="error">Please Enter country</span>
+                <label class="form-label" for="form3Example3">Country</label>
+              </div>
+
+              <!-- Password input -->
+              <div class="form-outline mb-4">
+                <input type="text" id="form3Example4" class="form-control" name="mobile" />
+                <span class="error">Please enter correct mobile</span>
+                <label class="form-label" for="form3Example4">Phone Number</label>
+              </div>
+              <div class="form-outline mb-4">
+                <textarea class="form-control" id="form3Example" name="address"></textarea>
+                <span class="error">Please enter address</span>
+                <label class="form-label" for="form3Example4">Address</label>
+              </div>
+               <div class="form-outline mb-4">
+                <input type="file" id="form3Example5" class="form-control" name="image" />
+                <label class="form-label" for="form3Example4"></label>
+              </div>
+
+              <!-- Checkbox -->
+              <div class="form-check d-flex justify-content-center mb-4">
+                <input class="form-check-input me-2" type="checkbox" value="" id="form2Example33" checked />
+                <label class="form-check-label" for="form2Example33">
+                  Subscribe to our newsletter
+                </label>
+              </div>
+
+              <!-- Submit button -->
+              <button type="submit" class="btn btn-warning btn-block mb-4">
+                Sign up
+              </button>
+
+              <!-- Register buttons -->
+              <div class="text-center">
+                <p>or sign up with:</p>
+                <button type="submit" class="btn btn-link btn-floating mx-1">
+                  <i class="fab fa-facebook-f"></i>
+                </button>
+
+                <button type="button" class="btn btn-link btn-floating mx-1">
+                  <i class="fab fa-google"></i>
+                </button>
+
+                <button type="button" class="btn btn-link btn-floating mx-1">
+                  <i class="fab fa-twitter"></i>
+                </button>
+
+                <button type="button" class="btn btn-link btn-floating mx-1">
+                  <i class="fab fa-github"></i>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6 mb-5 mb-lg-0 bg-warning" style="height:750px;">
+        <img src="{% static 'login/r.webp' %}" style="height:750px;" class="w-100 rounded-4 shadow-4"
+          alt="" />
+      </div>
+    </div>
+  </div>
+  <!-- Jumbotron -->
+</section>
+<!-- Section: Design Block -->
+
+<!-- MDB -->
+<style>
+     .error{
+display: block;
+font-weight: 700;
+font-size: 14px;
+color: red;
+display: none;
+}
+</style>
+<script
+  type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.js"
+></script>
+
+<script>
+
+    function FormValidation(){
+//alert("Alert")
+var name=document.custom_form.name;
+var lname=document.custom_form.email;
+var username=document.custom_form.username;
+var password=document.custom_form.password;
+var bloodgroup=document.custom_form.country;
+var address=document.custom_form.address;
+var mobile=document.custom_form.mobile;
+var image=document.custom_form.image;
+var conditions=document.custom_form.conditions;
+
+if (name.value == "") {
+   name.nextElementSibling.style.display = "block";
+   name.style.border = "1px solid #f00";
+   return false
+}else{
+  name.nextElementSibling.style.display = "none";
+  name.style.border = "1px solid transparent";
+}
+if (lname.value == "") {
+   lname.nextElementSibling.style.display = "block";
+   lname.style.border = "1px solid #f00";
+   return false
+}else{
+  lname.nextElementSibling.style.display = "none";
+  lname.style.border = "1px solid transparent";
+}
+if (username.value == "") {
+   username.nextElementSibling.style.display = "block";
+   username.style.border = "1px solid #f00";
+   return false
+}else{
+  username.nextElementSibling.style.display = "none";
+  username.style.border = "1px solid transparent";
+}
+if (password.value.length < 6) {
+   password.nextElementSibling.style.display = "block";
+   password.style.border = "1px solid #f00";
+   return false
+}else{
+  password.nextElementSibling.style.display = "none";
+  password.style.border = "1px solid transparent";
+}
+if (bloodgroup.value == "Gender") {
+   bloodgroup.nextElementSibling.style.display = "block";
+   bloodgroup.style.border = "1px solid #f00";
+   return false
+}else{
+  bloodgroup.nextElementSibling.style.display = "none";
+  bloodgroup.style.border = "1px solid transparent";
+}
+if (address.value == "") {
+   address.nextElementSibling.style.display = "block";
+   address.style.border = "1px solid #f00";
+   return false
+}else{
+  address.nextElementSibling.style.display = "none";
+  address.style.border = "1px solid transparent";
+}
+
+if (!mobile.value.match( /^\(?([5-9]{1})\)?([0-9]{9})$/) || mobile.value == "") {
+   mobile.nextElementSibling.style.display = "block";
+   mobile.style.border = "1px solid #f00";
+   return false
+}else{
+  mobile.nextElementSibling.style.display = "none";
+  mobile.style.border = "1px solid transparent";
+}
+if (image.value == "") {
+   image.nextElementSibling.style.display = "block";
+   image.style.border = "1px solid #f00";
+   return false
+}else{
+  image.nextElementSibling.style.display = "none";
+  image.style.border = "1px solid transparent";
+}
+if (message.value == "") {
+   message.nextElementSibling.style.display = "block";
+   message.style.border = "1px solid #f00";
+   return false
+}else{
+  message.nextElementSibling.style.display = "none";
+  message.style.border = "1px solid transparent";
+}
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h3 style="margin-top:50px;color:black; text-align:center;">Hospital Details</h3><br>
+
+<div class="row">
+                    {% for i in x %}
+                    <div class="col col-md-9 col-lg-9 col-xl-6">
+                        <div class="card" style="    border: 1px solid #ffc107;border-radius: 15px; margin-bottom:20px; margin-left:40px;
+                        background-image:url({% static 'patient_doctor/images/21jpg' %});background-size:100% 140%;">
+                            <div class="card-body p-4">
+                                <div class="d-flex text-black">
+                                    <div class="flex-shrink-0">
+                                        <img alt="Generic placeholder image"
+                                             class="img-fluid" src="{{i.Img.url}}"
+                                             style="width: 150px; height:180px; border-radius: 10px; border: 3px solid #ffc107;">
+                                    </div>
+                                    <div class="flex-grow-1 ms-4" style="margin-left:10px;">
+                                        <h5 class="" style="color:black">{{i.Name}}
+                                            <span class="text-muted mb-1" style="font-size:medium;">
+                                                {{i.Address}} , {{i.Country}}</span></h5>
+                                        <p class="mb-2 pb-1" style="color: #2b2a2a;">
+                                            <span>{{i.Email}}</span></p>
+                                        <p class="mb-2 pb-1" style="color: #2b2a2a;">
+                                            <span>{{i.Mobile}}</span></p>
+
+                                        <div class="d-flex justify-content-start rounded-3 p-2 mb-2"
+                                             style="background-color: #ffe597;">
+                                            <div>
+                                                <p class="small text-muted mb-1">Username</p>
+                                                <p class="mb-0">{{i.H_Username}}</p>
+                                            </div>
+                                            <div class="px-3">
+                                                <p class="small text-muted mb-1">Password</p>
+                                                <p class="mb-0">{{i.H_Password}}</p>
+                                            </div>
+                                            <div>
+
+                                            </div>
+                                        </div>
+                                        <div class="d-flex pt-1">
+                                            <form action="{% url 'admin_hospital_delete' i.id%}" method="post">
+                                                {% csrf_token %}
+                                                <button class="btn btn-outline-primary btn-sm w-100 ml-2" type="submit" style="color:black;">
+                                                Delete
+                                            </button>
+                                            </form>
+
+                                             <form action="{% url 'admin_upate_Hospital_page' i.id %}" method="post">
+                                    {% csrf_token %}
+                                    <button class="btn btn-sm btn-primary w-100 ml-2">View</button>
+                                </form>
+                                            <!--                                            <button class="btn btn-primary flex-grow-1" type="button">Follow</button>-->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+<!--<table class="table">-->
+<!--                                        <thead>-->
+<!--                                        <tr>-->
+<!--                                            <th>Name</th>-->
+<!--                                            <th>Email</th>-->
+<!--                                            <th>Mobile</th>-->
+<!--                                            <th>Address</th>-->
+<!--                                            <th>Country</th>-->
+<!--                                            <th>H_Userame</th>-->
+<!--                                            <th>H_Password</th>-->
+<!--                                            <th>delete</th>-->
+<!--                                        </tr>-->
+
+<!--                                        </thead>-->
+<!--                                        <tbody>-->
+<!--                                        {% for i in x %}-->
+<!--                                        <tr>-->
+<!--                                            <td data-label="S.No">{{i.Name}}</td>-->
+<!--                                            <td data-label="Name">{{i.Email}}</td>-->
+<!--                                            <td data-label="Staus">{{i.Mobile}}</td>-->
+<!--                                            <td data-label="Staus">{{i.Address}}</td>-->
+<!--                                            <td data-label="Staus">{{i.Country}}</td>-->
+<!--                                            <td data-label="Staus">{{i.H_Username}}</td>-->
+<!--                                            <td data-label="Staus">{{i.H_Password}}</td>-->
+<!--                                            <td>-->
+<!--                                                <form action="{% url 'admin_hospital_delete' i.id %}">-->
+<!--                                                <button class="btn btn-outline-danger"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">-->
+<!--  <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>-->
+<!--  <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>-->
+<!--</svg></button></form>-->
+<!--                                            </td>-->
+<!--                                        </tr>-->
+<!--                                        {% endfor %}-->
+
+<!--                                        </tbody>-->
+<!--                                    </table>-->
+
+
+</body>
+<style>
+     tr, td, th {
+        border-color: inherit;
+        border-style: solid;
+        border-width: 0;
+    }
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .table td,
+    .table th {
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      text-align: center;
+      font-size: 16px;
+    }
+
+   .table th {
+    background-color: #ffc107;
+    color: #212529;
+}
+
+    .table tbody tr:nth-child(even) {
+    background-color: #f5f5a0;;
+}
+
+    /*responsive*/
+
+    @media (max-width: 500px) {
+      .table thead {
+        display: none;
+      }
+
+
+    .card1 {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid #ffc107;
+    border-radius: 5px;
+}
+</style>
+</html>
+{% endblock %}

@@ -1,0 +1,366 @@
+
+<!--#login page demo-->
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+  <!-- Font Awesome -->
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+  rel="stylesheet"
+/>
+<!-- Google Fonts -->
+<link
+  href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+  rel="stylesheet"
+/>
+<!-- MDB -->
+<link
+  href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.css"
+  rel="stylesheet"
+/>
+</head>
+<body>
+<!-- Section: Design Block -->
+<section class="background-radial-gradient overflow-hidden">
+  <style>
+      .background-radial-gradient {
+      background-color: hsl(218, 41%, 15%);
+      background-image:url('{% static 'Patient_doctor/images/k.jpg' %}');
+      background-size: 100% 800px;
+    }
+
+
+    #radius-shape-1 {
+      height: 220px;
+      width: 220px;
+      top: -60px;
+      left: -130px;
+      background: radial-gradient(#6b0400, #fb3506);
+      overflow: hidden;
+      box-shadow: 10px 10px 5px lightblue;
+    }
+
+    #radius-shape-2 {
+      border-radius: 38% 62% 63% 37% / 70% 33% 67% 30%;
+      border-shadow:solid white;
+      bottom: -60px;
+      right: -110px;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(#6b0400, #fb3506);
+      overflow: hidden;
+    }
+
+
+.btn-danger {
+    --mdb-btn-bg: #db230c;
+    --mdb-btn-color: #fff;
+    --mdb-btn-box-shadow: 0 4px 9px -4px #dc534c;
+    --mdb-btn-hover-bg: #d14e48;
+    --mdb-btn-hover-color: #fff;
+    --mdb-btn-focus-bg: #f30a32;
+    --mdb-btn-focus-color: #fff;
+    --mdb-btn-active-bg: #eb1606;
+    --mdb-btn-active-color: #fff;
+    --mdb-btn-box-shadow-state: 0 8px 9px -4px rgba(220,76,100,0.3),0 4px 18px 0 rgba(220,76,100,0.2);
+}
+    .bg-glass {
+      background-color: hsla(0, 0%, 100%, 0.9) !important;
+      backdrop-filter: saturate(200%) blur(25px);
+    }
+  </style>
+
+  <div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
+    <div class="row gx-lg-5 align-items-center mb-5">
+      <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10; margin-top:-400px;">
+        <h1 class="my-5 display-5 fw-bold ls-tight" style=" margin-top:-50px; color: hsl(218, 81%, 95%)">
+           <br />
+          <span style="color: hsl(218, 81%, 75%)"></span>
+        </h1>
+
+      </div>
+
+      <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
+        <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></div>
+        <div id="radius-shape-2" class="position-absolute shadow-5-strong"></div>
+
+        <div class="card bg-glass">
+          <div class="card-body px-4 py-5 px-md-5">
+            <div class="">
+                    <form method="POST" action="{% url 'Patient_signup_data' %}" name="custom_form" id="customForm"  onsubmit="return FormValidation()" enctype="multipart/form-data">
+                        {% csrf_token %}
+                            <h2 style="text-align:center;">Patient Signup</h2>
+                        <table>
+                            <tr>
+                                <td>
+                                    <div class="form-row" style=" margin-top:20px;">
+                            <div class="name"></div>
+                            <div class="value">
+                                <div class=""><br>
+                                       <input type="text" style="position: relative;" class="form-control" name="fname" placeholder="First Name">
+ <span class="error">Please Enter Name</span>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        </td>
+
+                        <td>
+                            <div class="form-row" style=" margin-top:20px;">
+                                <div class="name"></div>
+                                    <div class="value">
+                                     <div class=""><br>
+                                    <input type="text" class="form-control" name="lname" placeholder="Last Name">
+                                         <span class="error">Please Enter Your Lastname</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                            </tr>
+                        </table>
+
+                        <div class="form-row" style=" margin-top:1;">
+                            <div class="name"></div>
+                            <div class="value">
+                                <div class=""><br>
+                                    <input type="text" class="form-control" name="username" placeholder="username">
+                                    <span class="error">Please Enter Username</span>
+                                     <div>
+                                        {% for message in messages %}
+                                        <h6>{{ message }}</h6>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row" style=" margin-top:0px;">
+                            <div class="name"></div>
+                            <div class="value">
+                                <div class=""><br>
+                                    <input type="password" class="form-control" name="password" placeholder="password">
+                                    <span class="error">Please Enter Password</span>
+                                </div>
+                            </div>
+                        </div>
+<!--                        <div class="">-->
+<!--                            <div class=""></div>-->
+<!--                            <div class="">-->
+<!--                                <div class="form-outline mb-4"><br>-->
+<!--                                     <select name="bloodgroup" class="form-control" required>-->
+<!--                                            <option>Choose option</option>-->
+<!--                                            <option>O+</option>-->
+<!--                                            <option>O-</option>-->
+<!--                                            <option>A+</option>-->
+<!--                                            <option>A-</option>-->
+<!--                                            <option>B+</option>-->
+<!--                                            <option>B-</option>-->
+<!--                                            <option>AB+</option>-->
+<!--                                            <option>AB-</option>-->
+<!--                                        </select>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+
+
+
+                        <div class="form-row">
+                            <div class="name"></div>
+                            <div class="value">
+                                <div class=""><br>
+                                        <select name="gender" class="form-control">
+                                            <option>Gender</option>
+                                            <option>Female</option>
+                                            <option>Male</option>
+                                            <option>Others</option>
+                                        </select>
+                                    <span class="error">Please Gender</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="name"></div>
+                            <div class="value">
+                                <div class=""><br>
+                                    <textarea class="form-control" name="address" placeholder="Address"></textarea>
+                                    <span class="error">Please Enter Address</span>
+                                </div>
+                            </div>
+                         </div>
+
+                        <div class="form-row">
+                            <div class="name"></div>
+                            <div class="value">
+                                <div class=" mb-4" ><br>
+                                    <input type="text" class="form-control" name="mobile" placeholder="Mobile">
+                                    <span class="error">Please Enter correct name</span>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+
+                        <div class="form-row">
+                            <div class="name"></div>
+                            <div class="value">
+                                <div class=" mb-4" ><br>
+                                    <input type="file" class="form-control" name="image">
+                                    <span class="error">Please Upload Image</span>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div>
+                            <button class="btn btn--radius-2 btn-danger" type="submit">Register</button>
+                        </div>
+                    </form>
+                    <br>
+                    <p style="text-align: center;">Already have an account ? <a style="text-decoration: none;" href="{% url 'Patient_Login_Page' %}">Click here to login</a></p>
+
+                </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Section: Design Block -->
+
+
+<!-- MDB -->
+<script
+  type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.js"></script>
+
+<style>
+    .form-outline .form-control {
+    min-height: auto;
+    padding: 0.2rem 0.7rem;
+    border: 0;
+    background: transparent;
+    transition: all .2s linear;
+    margin-top:-10px;
+}
+     .error{
+display: block;
+font-weight: 700;
+font-size: 14px;
+color: red;
+display: none;
+}
+
+                                            h6 {
+                                              color: red;
+                                            }
+
+</style>
+
+
+
+<script>
+
+    function FormValidation(){
+//alert("Alert")
+var name=document.custom_form.fname;
+var lname=document.custom_form.lname;
+var username=document.custom_form.username;
+var password=document.custom_form.password;
+var bloodgroup=document.custom_form.gender;
+var address=document.custom_form.address;
+var mobile=document.custom_form.mobile;
+var image=document.custom_form.image;
+var conditions=document.custom_form.conditions;
+
+if (name.value == "") {
+   name.nextElementSibling.style.display = "block";
+   name.style.border = "1px solid #f00";
+   return false
+}else{
+  name.nextElementSibling.style.display = "none";
+  name.style.border = "1px solid transparent";
+}
+if (lname.value == "") {
+   lname.nextElementSibling.style.display = "block";
+   lname.style.border = "1px solid #f00";
+   return false
+}else{
+  lname.nextElementSibling.style.display = "none";
+  lname.style.border = "1px solid transparent";
+}
+if (username.value == "") {
+   username.nextElementSibling.style.display = "block";
+   username.style.border = "1px solid #f00";
+   return false
+}else{
+  username.nextElementSibling.style.display = "none";
+  username.style.border = "1px solid transparent";
+}
+if (password.value.length < 6) {
+   password.nextElementSibling.style.display = "block";
+   password.style.border = "1px solid #f00";
+   return false
+}else{
+  password.nextElementSibling.style.display = "none";
+  password.style.border = "1px solid transparent";
+}
+if (bloodgroup.value == "Gender") {
+   bloodgroup.nextElementSibling.style.display = "block";
+   bloodgroup.style.border = "1px solid #f00";
+   return false
+}else{
+  bloodgroup.nextElementSibling.style.display = "none";
+  bloodgroup.style.border = "1px solid transparent";
+}
+if (address.value == "") {
+   address.nextElementSibling.style.display = "block";
+   address.style.border = "1px solid #f00";
+   return false
+}else{
+  address.nextElementSibling.style.display = "none";
+  address.style.border = "1px solid transparent";
+}
+
+if (!mobile.value.match( /^\(?([5-9]{1})\)?([0-9]{9})$/) || mobile.value == "") {
+   mobile.nextElementSibling.style.display = "block";
+   mobile.style.border = "1px solid #f00";
+   return false
+}else{
+  mobile.nextElementSibling.style.display = "none";
+  mobile.style.border = "1px solid transparent";
+}
+if (image.value == "") {
+   image.nextElementSibling.style.display = "block";
+   image.style.border = "1px solid #f00";
+   return false
+}else{
+  image.nextElementSibling.style.display = "none";
+  image.style.border = "1px solid transparent";
+}
+if (message.value == "") {
+   message.nextElementSibling.style.display = "block";
+   message.style.border = "1px solid #f00";
+   return false
+}else{
+  message.nextElementSibling.style.display = "none";
+  message.style.border = "1px solid transparent";
+}
+}
+</script>
+</body>
+</html>

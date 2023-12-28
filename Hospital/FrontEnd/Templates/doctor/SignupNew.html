@@ -1,0 +1,677 @@
+<html lang="en">
+{% load static %}
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  <title>Search Results</title>
+
+
+   <link rel="stylesheet" href="{% static 'Searchbutton/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'Searchbutton/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'Searchbutton/css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'Searchbutton/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'Searchbutton/css/themify-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'Searchbutton/css/nice-select.css' %}">
+    <link rel="stylesheet" href="{% static 'Searchbutton/css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'Searchbutton/css/gijgo.css' %}">
+    <link rel="stylesheet" href="{% static 'Searchbutton/css/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'Searchbutton/css/slicknav.css' %}">
+    <link rel="stylesheet" href="{% static 'Searchbutton/css/style.css' %}">
+
+  <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'Patient_doctor/css/open-iconic-bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'Patient_doctor/css/animate.css' %}">
+
+    <link rel="stylesheet" href="{% static 'Patient_doctor/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'Patient_doctor/css/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'Patient_doctor/css/magnific-popup.css' %}">
+
+    <link rel="stylesheet" href="{% static 'Patient_doctor/css/aos.css' %}">
+
+    <link rel="stylesheet" href="{% static 'Patient_doctor/css/ionicons.min.css' %}">
+
+    <link rel="stylesheet" href="{% static 'Patient_doctor/css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'Patient_doctor/css/icomoon.css' %}">
+    <link rel="stylesheet" href="{% static 'Patient_doctor/css/style.css' %}">
+</head>
+<body>
+<div class="py-1 bg-black top" style="background-color:#ffc107;">
+    <div class="container" style="background-color:#ffc107;">
+        <div class="row no-gutters d-flex align-items-start align-items-center px-md-0" style="background-color:yellow;">
+            <div class="col-lg-12 d-block" style="background-color:#ffc107;">
+                <div class="row d-flex" style="color:black;">
+                    <div class="col-md pr-4 d-flex topper align-items-center">
+                        <div class="icon mr-2 d-flex justify-content-center align-items-center"><span
+                                class="icon-phone2"></span></div>
+                        <span class="text">+ 1235 2355 98</span>
+                    </div>
+                    <div class="col-md pr-4 d-flex topper align-items-center">
+                        <div class="icon mr-2 d-flex justify-content-center align-items-center"><span
+                                class="icon-paper-plane"></span></div>
+                        <span class="text">youremail@email.com</span>
+                    </div>
+                    {% for i in hospital %}
+                    <div class="col-md-5 pr-4 d-flex topper align-items-center text-lg-right justify-content-end">
+                        <p class="mb-0 register-link">Welcome {{i.Name}}<a href="#" style="color:black;"></a></p>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light "
+     id="">
+    <div class="container">
+        <a class="navbar-brand" href="index.html"><span style="color:Blue;">MEDI</span><span style="color:red;">Plus</span><span class="" >+</span></a>
+        <button aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation"
+                class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" data-target="#ftco-nav" data-toggle="collapse" type="button">
+            <span class="oi oi-menu"></span> Menu
+        </button>
+
+        <div class="collapse navbar-collapse" id="ftco-nav">
+            <ul class="navbar-nav nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="{% url 'Hospital_Dashbord_Pape' %}"><span>Home</span></a></li>
+                <li class="nav-item"><a class="nav-link" href="#about-section" ><span>About</span></a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'Laboratory_Page' %}" ><span>Lab</span></a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'Doctor_SignUp_Page' %}" ><span>Doctors</span></a>
+                </li>
+                <li class="nav-item"><a class="nav-link"
+                                        href="{% url 'Doctor_PatientInfo_Page' %}" ><span>Patients</span></a></li>
+                <li class="nav-item"><a class="nav-link" href="#contact-section" ><span>Contact</span></a></li>
+<!--                <li class="nav-item cta mr-md-2"><a class="nav-link" href="appointment.html">Appointment</a></li>-->
+            <form action="">
+                {% for i in qoutes %}
+                <input name="q" type="hidden" value="{{i.Username}}">
+                {% endfor %}
+                {% for i in hospital %}
+                <input name="h" type="hidden" value="{{i.H_Username}}">
+                {% endfor %}
+{% if request.session.Username %}
+                    {% for i in doctor %}
+                    <input type="hidden" value="{{i.Username}}">
+                    {% endfor %}
+                    {% endif %}
+
+                <a class="btn btn-outline-dark" href="{% url 'Hospital_Logout' %}" type="submit" style="margin-top:10px;margin-left:10px;">
+                <span class="glyphicon glyphicon-off">
+              <img height="20px;" src="{% static 'Labsearch/img/logout-8-64.png' %}" style="color:black" width="20px">
+</span>
+                Logout</a>
+
+            </form>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+<!--	  <section class="blog_item_img blog_area section-padding" style="background-image: url('{% static 'Patient_doctor/images/p.webp' %}'); height:10px;" data-section="home" data-stellar-background-ratio="0.5">-->
+<!--      </section>-->
+    <div class="blog_item_img">
+                                <img class="card-img rounded-0" src="{% static 'Patient_doctor/images/e1.jpg' %}" alt="" height="350px";>
+                            </div>
+  <div class="" style="">
+    <br>
+
+
+
+  </div>
+<!-- <div class="modal fade" id="searchModal" tabindex="-1">-->
+<!--        <div class="modal-dialog modal-fullscreen">-->
+<!--            <div class="modal-content" style="background: rgba(9, 30, 62, .7);">-->
+<!--                <div class="modal-header border-0">-->
+<!--                    <button type="button" class="btn bg-white btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+<!--                </div>-->
+
+<!--                <div class="modal-body d-flex align-items-center justify-content-center">-->
+<!--                    <div class="input-group" style="max-width: 600px;">-->
+<!--                        <input type="text" value="{{quote.Username}}" class="form-control bg-transparent border-primary p-3" placeholder="Type search keyword">-->
+<!--                        <button class="btn btn-warning px-4"><i class="bi bi-search"></i></button>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+    <!-- Full Screen Search End -->
+
+
+    <!-- Blog Start -->
+    <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="row g-5">
+                <!-- Blog list Start -->
+                <div class="col-lg-8">
+                    <div class="row g-5">
+
+                        <div class="col-md-12 wow " data-wow-delay="0.6s" style="margin-bottom:5px; margin-top:-1px;">
+                            <div class="blog-item bg-white rounded overflow-hidden" style="margin-bottom:5px;">
+                                <div class="p-4">
+                                    <div class="d-flex mb-3">
+
+
+
+                                    </div>
+                                    </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 wow " data-wow-delay="0.6s" style="margin-top:-82px;">
+                            <div class="blog-item bg-white rounded overflow-hidden" style="">
+                                <div class="blog-img position-relative overflow-hidden" style="border-top:20px solid white;">
+                                    <img class="img-fluid" src="{% static 'Patient_doctor/images/e10.jpg' %}" alt="" height="100%" width="100%" style="margin-left:10px;">
+<!--                                    <a class="position-absolute top-0 start-0 bg-primary text-white rounded-end mt-5 py-2 px-4" href="">Web Design</a>-->
+                                </div>
+                                <div class="p-3">
+                                    <div class="d-flex mb-3">
+                                        <small class="me-3"><i class="far fa-user text-warning me-2"></i>John Doe</small>
+                                        <small><i class="far fa-calendar-alt text-warning me-2"></i>01 Jan, 2045</small>
+                                    </div>
+                                    <h4 class="mb-3">All doctors treat, but a good doctor lets nature heal</h4>
+                                    <p>Malabar Institute of Medical Sciences Ltd (MIMS), the well-acclaimed health enterprise and one of the leading healthcare systems in Malabar, assures comprehensive health care services with a global standard. The 600-bedded multispecialty hospital is renowned for its excellent medical expertise, nursing care and quality diagnostic services. By focusing on the idea of caring mission with a global vision, Aster MIMS - one of the best hospital in Calicut, stresses on improving the health of the community by setting up the standard of excellence in medical education, research and clinical care. Aiming a patient- centric care, the hospital is utilizing enhanced lifesaving technologies for leveraging the level of cure.</p>
+<!--                                    <a class="text-uppercase" href="">Read More <i class="bi bi-arrow-right"></i></a>-->
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+                <!-- Blog list End -->
+
+                <!-- Sidebar Start -->
+
+
+                <div class="col-lg-4">
+                    <!-- Search Form Start -->
+
+                    <!-- Search Form End -->
+
+                    <!-- Category Start -->
+                    <div class="mb-5 wow bg-warning" data-wow-delay="0.1s" style="border-radius:5px;box-shadow:0px 0px 15px rgba(0, 0, 0, 0.10);">
+                        <div class="card-body px-4 py-5 px-md-5">
+            <form method="post" action="{% url 'Doctor_Login_Data' %}">
+              {% csrf_token %}
+              <!-- 2 column grid layout with text inputs for the first and last names -->
+                 <h4 style="text-align:center; margin-bottom:10px; margin-top:-10px;">Login Here</h4>
+                 {% for i in hospital %}
+                      <input type="hidden" name="q" value="{{ i.H_Username }}" >
+                 {% endfor %}
+                {% for i in doctor %}
+                      <input type="hidden" name="h" value="{{ i.Username }}">
+                 {% endfor %}
+              <!-- Email input -->
+              <div class="">
+                <input type="text" id="form3Example" class="form-control" name="username" placeholder="username" style="margin-bottom:10px;" />
+
+              </div>
+
+              <!-- Password input -->
+              <div class="">
+                <input type="password" id="form3Exampl4" class="form-control" name="password" placeholder="Password" style="margin-bottom:10px;" />
+              </div>
+
+
+              <!-- Submit button -->
+              <button type="submit" class="btn btn-outline-dark btn-block mb-4"  style="">
+                Sign up
+              </button>
+
+              <!-- Register buttons -->
+
+            </form>
+
+                    <p style="text-align: center;">don't have an account ? <a style="text-decoration: none;color:red" href="{% url 'Doctor_SignUp_SignIn_Page' %}" data-toggle="modal"  data-target="#exampleModalScrollable">Click here</a></p>
+
+
+      <!-- Button trigger modal -->
+<button type="button" class="btn btn-danger btn-block mb-4" data-toggle="modal" style="" data-target="#exampleModalScrollable">
+  Register
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+          {% for i in hospital %}
+
+        <h5 class="modal-title" id="exampleModalScrollableTitle">{{i.Name}} Doctors Signup Here...!</h5>
+
+                                                                  {% endfor %}
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="well well-sm">
+<form method="post" action="{% url 'doctor_Signup_Data' %}" enctype="multipart/form-data">
+                                                    {% csrf_token %}
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+
+                                                            <input type="text" style="height:30px;" class="form-control imp" name="name" id="ne" placeholder="Enter name" required="required" />
+<!--                                                            {% for quote in quotes %}-->
+<!--                                                            <input type="hidden" class="form-control imp" name="q" value="{{ quote.Username }}"  placeholder="{{ quote.Username }}" required="required" />-->
+<!--                                                        {% endfor %}-->
+                                                        </div>
+
+                                                        <div class="form-group">
+
+                                                            <input type="text" class="form-control imp" name="mobile" placeholder="Enter Mobile" required="required" />
+<!--                                                            {% for quote in quotes %}-->
+<!--                                                            <input type="hidden" class="form-control imp" name="q" value="{{ quote.Username }}"  placeholder="{{ quote.Username }}" required="required" />-->
+<!--                                                        {% endfor %}-->
+                                                        </div>
+
+                                                        <div class="form-group">
+
+                                                            {% for i in hospital %}
+                                                            <input type="hidden" name="q" value="{{ i.H_Username }}">
+
+                                                            <input id="ect" name="hospital" class="form-control" value="{{i.Name}}"readonly required="required">
+
+                                                                  {% endfor %}
+
+
+                                                        </div>
+
+
+                                                      <div class="form-group">
+
+                                                            <input name="country" id="ge" class="form-control"  required="required"
+                                                                placeholder="Country">
+                                                        </div>
+                                                       <div class="form-group">
+
+                                                            <input type="text" name="username"  class="form-control"  required="required"
+                                                                placeholder="Username">
+                                                       </div>
+                                                        <div class="form-group">
+                                                            <label>
+                                                                photo</label>
+                                                            <input type="file" name="photo"  class="form-control"  required="required"
+                                                                >
+                                                        </div>
+                                                      </div>
+                                                    <div class="col-md-6">
+                                                      <div class="form-group">
+
+                                                            <input type="email" class="form-control imp" name="email" placeholder="Enter Email" required="required" />
+<!--                                                            {% for quote in quotes %}-->
+<!--                                                            <input type="hidden" class="form-control imp" name="q" value="{{ quote.Username }}"  placeholder="{{ quote.Username }}" required="required" />-->
+<!--                                                        {% endfor %}-->
+                                                        </div>
+                                                       <div class="form-group">
+
+                                                            <input type="date" class="form-control imp" name="date" placeholder="DOB" required="required" />
+<!--                                                            {% for quote in quotes %}-->
+<!--                                                            <input type="hidden" class="form-control imp" name="q" value="{{ quote.Username }}"  placeholder="{{ quote.Username }}" required="required" />-->
+<!--                                                        {% endfor %}-->
+                                                        </div>
+                                                       <div class="form-group">
+
+                                                            <input  name="specialization" placeholder="Specialization" class="form-control" required="required">
+
+
+
+                                                        </div>
+                                                      <div class="form-group">
+
+                                                            <input type="text" name="medicalid"  class="form-control"  required="required"
+                                                                placeholder="Medical ID">
+                                                        </div>
+
+                                                      <div class="form-group">
+
+                                                            <input type="password" name="password"  class="form-control"  required="required"
+                                                                placeholder="password">
+                                                        </div>
+                                                      <div class="form-group">
+                                                            <label>
+                                                                medicalID</label>
+                                                            <input type="file" name="medical"  class="form-control"  required="required"
+                                                                >
+                                                        </div>
+
+
+                                                    </div>
+
+                                                  <div class="modal-footer">
+        <button type="submit" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-outline-dark">Sumbit</button>
+      </div>
+                                                </div>
+                                                </form>
+
+
+                </div>
+                                        </div>
+                                    </div>
+                                </div>
+        <div class="signup-form">
+                    </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+          </div>
+                    </div>
+                    <!-- Category End -->
+
+                    <!-- Recent Post Start -->
+                    <div class="mb-5 wow " data-wow-delay="0.1s">
+                        <div class="section-title section-title-sm position-relative pb-3 mb-4">
+
+                        </div>
+                        <div class="d-flex rounded overflow-hidden mb-3">
+                            <img class="img-fluid" src="{% static 'Patient_doctor/images/r1.avif' %}" style="width: 100%; height: 200px; object-fit: cover;" alt="">
+                        </div>
+                                                    <p  class="fw-semi-bold d-flex align-items-center bg-white px-3 mb-0">a person skilled or specializing in healing arts. especially : one (as a physician, dentist, or veterinarian) who holds an advanced degree and is licensed to practice</p>
+
+                    </div>
+                    <!-- Recent Post End -->
+
+                    <!-- Image Start -->
+<!--                    <div class="mb-5 wow " data-wow-delay="0.1s">-->
+<!--                        <img src="{% static 'Patient_doctor/images/medicine2.jpg' %}" alt="" class="img-fluid rounded">-->
+<!--                    </div>-->
+
+                </div>
+
+                <!-- Sidebar End -->
+            </div>
+        </div>
+    </div>
+    <!-- Blog End -->
+
+
+<section class="ftco-section" id="doctor-section" style="margin-top:-150px;">
+			<div class="container-fluid px-5">
+				<div class="row justify-content-center mb-5 pb-2">
+          <div class="col-md-8 text-center heading-section ftco-animate">
+            <h2 class="mb-4">Our Qualified Doctors</h2>
+            <p>Separated they live in. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country</p>
+          </div>
+        </div>
+				<div class="row">
+                    {% for i in doctor %}
+					<div class="col-md-6 col-lg-3 ftco-animate">
+						<div class="staff">
+							<div class="img-wrap d-flex align-items-stretch">
+								<div class="img align-self-stretch" style="background-image: url('{{i.Photo.url}}');"></div>
+							</div>
+							<div class="text pt-3 text-center">
+								<h3 class="mb-2">{{i.Name}}</h3>
+								<span class="position mb-2" style="color:#ffc107;">{{i.Specialization}}</span>
+								<div class="faded">
+									<p>I am an ambitious workaholic, but apart from that, pretty simple person.</p>
+									<ul class="ftco-social text-center">
+		                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+		                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+		                <li class="ftco-animate"><a href="#"><span class="icon-google-plus"></span></a></li>
+		                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+		              </ul>
+<!--		              <p><a href="#" class="btn btn-warning">Book now</a></p>-->
+	              </div>
+							</div>
+						</div>
+					</div>
+                    {% endfor %}
+				</div>
+			</div>
+		</section>
+    <!-- Vendor Start -->
+    <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container py-5 mb-5">
+            <div class="bg-white">
+                <div class="owl-carousel vendor-carousel">
+                    <img src="img/vendor-1.jpg" alt="">
+                    <img src="img/vendor-2.jpg" alt="">
+                    <img src="img/vendor-3.jpg" alt="">
+                    <img src="img/vendor-4.jpg" alt="">
+                    <img src="img/vendor-5.jpg" alt="">
+                    <img src="img/vendor-6.jpg" alt="">
+                    <img src="img/vendor-7.jpg" alt="">
+                    <img src="img/vendor-8.jpg" alt="">
+                    <img src="img/vendor-9.jpg" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+<style>
+    .ftco-navbar-light.scrolled {
+    position: fixed;
+    right: 0;
+    left: 0;
+    top: 0;
+    margin-top: -130px;
+    background: #ffc107 !important;
+    -webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    padding: 0 15px;
+}
+  .booking_form_container {
+    width: 200%;
+    margin-top: 34px;
+    padding-left: 78px;
+    padding-right: 88px;
+}
+div {
+    display: block;
+    position: relative;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+  .booking_form_container {
+    width: 200%;
+    margin-top: 34px;
+    padding-left: 78px;
+    padding-right: 88px;
+}
+div {
+    display: block;
+    position: relative;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.booking_button {
+    width: 152px;
+    height: 54px;
+    background: blue;
+    font-size: 14px;
+    font-weight: 500;
+    color: #ffffff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+  .booking_input {
+    width: 500px;
+    height: 54px;
+    background: rgba(255,255,255,0.7);
+    border: solid 2px blue;
+    padding-left: 27px;
+    font-size: 14px;
+    font-weight: 500;
+    color: black;
+    outline: none;
+    margin-right:20px;
+}
+
+    .jumbotron {
+background: #358CCE;
+color: #FFF;
+border-radius: 0px;
+}
+.jumbotron-sm { padding-top: 24px;
+padding-bottom: 24px; }
+.jumbotron small {
+color: #FFF;
+}
+.h1 small {
+font-size: 24px;
+}
+.blog_right_sidebar .search_widget .input-group button {
+    background: #fff;
+    border-left: 0;
+    border-right: 1px groove #f0e9ff;
+    padding: 4px 15px;
+    border-left: 0;
+}
+    .my-custom-scrollbar {
+position: relative;
+height: 200px;
+overflow: auto;
+}
+.table-wrapper-scroll-y {
+display: block;
+}
+    .input-group1 {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-align: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    width: 100%;
+}
+    .boxed-btn {
+    background: #009dff;
+    }
+    .p-4 {
+    padding: 2.5rem !important;
+}
+    .form-control {
+    height: 40px !important;
+    background: #fff !important;
+    color: #000000 !important;
+    font-size: 18px;
+    border-radius: 5px;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+}
+    .staff:hover .text h3, .staff:focus .text h3 {
+    color: #ffc107;
+}
+    .ftco-navbar-light .navbar-nav > .nav-item > .nav-link span:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background: #ff5e13;
+    visibility: visible;
+    -webkit-transform: scaleX(0);
+    -moz-transform: scaleX(0);
+    -ms-transform: scaleX(0);
+    -o-transform: scaleX(0);
+    transform: scaleX(0);
+    -webkit-transition: all 0.3s ease-in-out 0s;
+    -moz-transition: all 0.3s ease-in-out 0s;
+    -ms-transition: all 0.3s ease-in-out 0s;
+    -o-transition: all 0.3s ease-in-out 0s;
+    transition: all 0.3s ease-in-out 0s;
+}
+
+    .modal-content {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    width: 100%;
+    pointer-events: auto;
+    background-color: #f3c22d;
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 0.3rem;
+    outline: 0;
+}
+</style>
+  <script src="{% static 'Patient_doctor/js/jquery.min.js' %}"></script>
+  <script src="{% static 'Patient_doctor/js/jquery-migrate-3.0.1.min.js' %}"></script>
+  <script src="{% static 'Patient_doctor/js/popper.min.js' %}"></script>
+  <script src="{% static 'Patient_doctor/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'Patient_doctor/js/jquery.easing.1.3.js' %}"></script>
+  <script src="{% static 'Patient_doctor/js/jquery.waypoints.min.js' %}"></script>
+  <script src="{% static 'Patient_doctor/js/jquery.stellar.min.js' %}"></script>
+  <script src="{% static 'Patient_doctor/js/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'Patient_doctor/js/jquery.magnific-popup.min.js' %}"></script>
+  <script src="{% static 'Patient_doctor/js/aos.js' %}"></script>
+  <script src="{% static 'Patient_doctor/js/jquery.animateNumber.min.js' %}"></script>
+  <script src="{% static 'Patient_doctor/js/scrollax.min.js' %}"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <script src="{% static 'Patient_doctor/js/google-map.js' %}"></script>
+
+  <script src="{% static 'Patient_doctor/js/main.js' %}"></script>
+
+
+
+<script src="{% static 'Searchbutton/js/vendor/modernizr-3.5.0.min.js' %}"></script>
+    <script src="{% static 'Searchbutton/js/vendor/jquery-1.12.4.min.js' %}"></script>
+    <script src="{% static 'Searchbutton/js/popper.min.js' %}"></script>
+    <script src="{% static 'Searchbutton/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'Searchbutton/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'Searchbutton/js/isotope.pkgd.min.js' %}"></script>
+    <script src="{% static 'Searchbutton/js/ajax-form.js' %}"></script>
+    <script src="{% static 'Searchbutton/js/waypoints.min.js' %}"></script>
+    <script src="{% static 'Searchbutton/js/jquery.counterup.min.js' %}"></script>
+    <script src="{% static 'Searchbutton/js/imagesloaded.pkgd.min.js' %}"></script>
+    <script src="{% static 'Searchbutton/js/scrollIt.js' %}"></script>
+    <script src="{% static 'Searchbutton/js/jquery.scrollUp.min.js' %}"></script>
+    <script src="{% static 'Searchbutton/js/wow.min.js' %}"></script>
+    <script src="{% static 'Searchbutton/js/nice-select.min.js' %}"></script>
+    <script src="{% static 'Searchbutton/js/jquery.slicknav.min.js' %}"></script>
+    <script src="{% static 'Searchbutton/js/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'Searchbutton/js/plugins.js' %}"></script>
+    <script src="{% static 'Searchbutton/js/gijgo.min.js' %}"></script>
+
+    <!--contact js-->
+    <script src="{% static 'Searchbutton/js/contact.js' %}"></script>
+    <script src="{% static 'Searchbutton/js/jquery.ajaxchimp.min.js' %}"></script>
+    <script src="{% static 'Searchbutton/js/jquery.form.js' %}"></script>
+    <script src="{% static 'Searchbutton/js/jquery.validate.min.js' %}"></script>
+    <script src="{% static 'Searchbutton/js/mail-script.js' %}"></script>
+
+    <script src="{% static 'Searchbutton/js/main.js' %}"></script>
+    <script>
+        $('.datepicker').datepicker({
+            iconsLibrary: 'fontawesome',
+            icons: {
+                rightIcon: '<span class="fa fa-calendar"></span>'
+            }
+        });
+
+        $('.timepicker').timepicker({
+            iconsLibrary: 'fontawesome',
+            icons: {
+                rightIcon: '<span class="fa fa-clock-o"></span>'
+            }
+        });
+    $(document).ready(function() {
+    $('.js-example-basic-multiple').select2();
+});
+    </script>
+
+</body>
+</html>
